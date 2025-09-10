@@ -1,8 +1,12 @@
 @import '@digi/arbetsformedlingen/dist/digi-arbetsformedlingen/digi-arbetsformedlingen.css';
 @import '@digi/arbetsformedlingen/dist/digi-arbetsformedlingen/fonts/src/fonts.css';
 
-/* Här lägger vi in färg-variabler: */
-/* 
+
 :root {
-} 
-*/
+  --digi--color--text--inverted:#FCF7EB;
+  --digi--color--background--inverted-1: #267E5B; 
+  --digi--color--border--inverted-3: #FCF7EB; 
+  --digi--color--text--primary: #FCF7EB; 
+  }
+  
+
