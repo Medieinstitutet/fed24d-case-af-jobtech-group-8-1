@@ -1,13 +1,13 @@
-import { DigiButton } from "@digi/arbetsformedlingen-react";
 import "./App.css";
-import { ButtonVariation } from "@digi/arbetsformedlingen";
-import AppFooter from "./components//AppFooter";
+import { router } from "./Router";
+import { RouterProvider } from "react-router";
 
 function App() {
-	return <>
-		<DigiButton afVariation={ButtonVariation.PRIMARY}>Detta är en knapp</DigiButton>
-		<AppFooter />
-	</>;
+	return (
+		<>
+			<RouterProvider router={router}></RouterProvider>
+		</>
+	);
 }
 
 export default App;
