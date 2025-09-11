@@ -3,10 +3,9 @@ import {
 	DigiHeaderAvatar,
 	DigiHeaderNavigation,
 	DigiHeaderNavigationItem,
-	DigiTypography,
 } from "@digi/arbetsformedlingen-react";
-import logo from "../assets/header-logo.svg";
-import { TypographyVariation } from "@digi/arbetsformedlingen";
+import logo from "../assets/logo-nextstep.svg";
+
 
 export const AppHeader = () => {
 	return (
@@ -25,10 +24,7 @@ export const AppHeader = () => {
 						color: "var(--digi--color--text--primary)",
 					}}
 				>
-					<img src={logo} alt="NextStep logotyp" style={{ height: "40px" }} />
-					<DigiTypography afVariation={TypographyVariation.LARGE}>
-						<h1 style={{ margin: 0 }}>Nexstep</h1>
-					</DigiTypography>
+					<img src={logo} alt="Next Step" width={140} height={60} className="ns-footer__logo" />
 				</a>
 				<div slot="header-content">
 					<DigiHeaderAvatar

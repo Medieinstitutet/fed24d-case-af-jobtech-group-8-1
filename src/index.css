@@ -3,6 +3,8 @@
 
 /* Här lägger vi in färg-variabler: */
  
+/* Här lägger vi in färg-variabler: */
+ 
 :root {
 
     /* Button colors */
@@ -26,12 +28,44 @@
     
     /* Pagination btn non-active hover */
     --digi--color--background--inverted-5: #d4e9db;
-} 
-
 	--digi--color--text--inverted: #fcf7eb;
 	--digi--color--border--inverted-3: #fcf7eb;
 	--digi--color--text--primary: #267e5b;
 
+} 
+
+	
 main, body {
     background-color: #f3f0e6;
 }
+
+  .ns-footer {
+	--digi--gutter--largest-2: 0;
+}
+
+:where(digi-footer) [slot="content-bottom-left"] {
+	place-self: end start;
+	align-self: end;
+	width: auto;
+	text-align: left;
+}
+
+:where(digi-footer) [slot="content-bottom-right"] {
+	place-self: end end;
+	align-self: end;
+	margin-left: auto;
+	text-align: right;
+}
+
+.ns-footer__bottom-left {
+	display: flex;
+	justify-content: flex-start;
+	align-items: flex-end;
+}
+
+.ns-footer__logo {
+	display: block;
+	height: auto;
+}
+  
+
