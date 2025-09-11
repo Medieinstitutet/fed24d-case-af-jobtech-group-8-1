@@ -3,10 +3,9 @@ import {
 	DigiHeaderAvatar,
 	DigiHeaderNavigation,
 	DigiHeaderNavigationItem,
-	DigiTypography,
 } from "@digi/arbetsformedlingen-react";
 import logo from "../assets/logo-nextstep.svg";
-import { TypographyVariation } from "@digi/arbetsformedlingen";
+
 
 export const AppHeader = () => {
 	return (
