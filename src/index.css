@@ -1,12 +1,9 @@
-@import '@digi/arbetsformedlingen/dist/digi-arbetsformedlingen/digi-arbetsformedlingen.css';
-@import '@digi/arbetsformedlingen/dist/digi-arbetsformedlingen/fonts/src/fonts.css';
-
+@import "@digi/arbetsformedlingen/dist/digi-arbetsformedlingen/digi-arbetsformedlingen.css";
+@import "@digi/arbetsformedlingen/dist/digi-arbetsformedlingen/fonts/src/fonts.css";
 
 :root {
-  --digi--color--text--inverted:#FCF7EB;
-  --digi--color--background--inverted-1: #267E5B; 
-  --digi--color--border--inverted-3: #FCF7EB; 
-  --digi--color--text--primary: #FCF7EB; 
-  }
-  
-
+	--digi--color--text--inverted: #fcf7eb;
+	--digi--color--background--inverted-1: #267e5b;
+	--digi--color--border--inverted-3: #fcf7eb;
+	--digi--color--text--primary: #267e5b;
+}
