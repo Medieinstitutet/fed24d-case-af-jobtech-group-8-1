@@ -7,6 +7,7 @@ import {
 } from "@digi/arbetsformedlingen";
 import {
 	DigiLayoutBlock,
+	DigiLink,
 	DigiTypography,
 	DigiTypographyMeta,
 	DigiTypographyPreamble,
@@ -25,12 +26,15 @@ export const SearchResults = ({ jobs }: SearchResultsProps) => {
 				<h2>Sökresultat:</h2>
 				{jobs.map((job) => (
 					<DigiLayoutBlock
-						afVariation={LayoutBlockVariation.PRIMARY}
+						afVariation={LayoutBlockVariation.SECONDARY}
 						afContainer={LayoutBlockContainer.FLUID}
 						afVerticalPadding
+						afMarginBottom
 						key={job.id}
 					>
-						<h3>{job.headline}</h3>
+						<DigiLink afHref="#">
+							<h3>{job.headline}</h3>
+						</DigiLink>
 						<DigiTypographyMeta afVariation={TypographyMetaVariation.PRIMARY}>
 							<DigiTypographyPreamble>{job.employer.name}</DigiTypographyPreamble>
 							<p slot="secondary">
