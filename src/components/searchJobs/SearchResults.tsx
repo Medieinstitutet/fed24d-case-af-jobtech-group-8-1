@@ -14,12 +14,38 @@ import {
 	DigiTypographyTime,
 } from "@digi/arbetsformedlingen-react";
 import type { IJobAdBrief } from "../../models/IJobAd";
+import { SaveJob } from "./SaveJob";
+import { useEffect, useState } from "react";
 
 type SearchResultsProps = {
 	jobs: IJobAdBrief[];
 };
 
+const getSavedJobIds = (): string[] => {
+	return JSON.parse(localStorage.getItem("savedJobsNextStep") || "[]")
+}
+
 export const SearchResults = ({ jobs }: SearchResultsProps) => {
+	const [savedJobIds, setSavedJobIds] = useState<string[]>(getSavedJobIds());
+
+	useEffect(() => {
+		const onStorage = () => setSavedJobIds(getSavedJobIds());
+		window.addEventListener("storage", onStorage);
+		return () => window.removeEventListener("storage", onStorage);
+	}, [])
+
+	const handleToggleSave = (job: IJobAdBrief) => {
+		let updatedIds: string[];
+		if (savedJobIds.includes(job.id)) {
+			updatedIds = savedJobIds.filter(id => id !== job.id);
+		} else {
+			updatedIds = [...savedJobIds, job.id];
+		}
+
+		setSavedJobIds(updatedIds);
+		localStorage.setItem("savedJobsNextStep", JSON.stringify(updatedIds));
+	}
+
 	return (
 		<DigiLayoutBlock afVariation={LayoutBlockVariation.PRIMARY} afContainer={LayoutBlockContainer.FLUID}>
 			<DigiTypography afVariation={TypographyVariation.LARGE}>
@@ -44,7 +70,11 @@ export const SearchResults = ({ jobs }: SearchResultsProps) => {
 									afDateTime={job.publication_date}
 								/>
 							</p>
+							<p slot="secondary">
+								{job.workplace_address.municipality}
+							</p>
 						</DigiTypographyMeta>
+						<SaveJob isSaved={savedJobIds.includes(job.id)} toggleSaved={() => handleToggleSave(job)}/>
 					</DigiLayoutBlock>
 				))}
 			</DigiTypography>
