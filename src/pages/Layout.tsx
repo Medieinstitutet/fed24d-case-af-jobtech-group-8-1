@@ -1,13 +1,17 @@
 import { Outlet } from "react-router";
+import AppFooter from "../components/AppFooter";
+import { AppHeader } from "../components/AppHeader";
 
 export const Layout = () => {
 	return (
 		<>
-			{/* Header */}
+			<header>
+				<AppHeader />
+			</header>
 			<main>
 				<Outlet />
 			</main>
-			{/* Footer */}
+			{<AppFooter />}
 		</>
 	);
 };

@@ -1,12 +1,12 @@
-@import '@digi/arbetsformedlingen/dist/digi-arbetsformedlingen/digi-arbetsformedlingen.css';
-@import '@digi/arbetsformedlingen/dist/digi-arbetsformedlingen/fonts/src/fonts.css';
+@import "@digi/arbetsformedlingen/dist/digi-arbetsformedlingen/digi-arbetsformedlingen.css";
+@import "@digi/arbetsformedlingen/dist/digi-arbetsformedlingen/fonts/src/fonts.css";
 
 /* Här lägger vi in färg-variabler: */
  
 :root {
 
     /* Button colors */
-    --digi--color--background--inverted-1: #377d5c;
+    --digi--color--background--inverted-1: #267e5b;
     /* Hover */
     --digi--color--background--inverted-6: #1d4e37;
 
@@ -28,8 +28,10 @@
     --digi--color--background--inverted-5: #d4e9db;
 } 
 
+	--digi--color--text--inverted: #fcf7eb;
+	--digi--color--border--inverted-3: #fcf7eb;
+	--digi--color--text--primary: #267e5b;
 
 main, body {
     background-color: #f3f0e6;
 }
-

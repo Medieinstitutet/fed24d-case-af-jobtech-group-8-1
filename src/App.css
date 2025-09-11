@@ -1,0 +1,10 @@
+body {
+	margin: 0;
+}
+
+/*-------- Header --------*/
+
+/* Remove default logo */
+.digi-header digi-logo .digi-logo__img {
+	display: none !important;
+}
