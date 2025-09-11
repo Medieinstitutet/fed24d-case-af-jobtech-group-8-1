@@ -1,12 +1,40 @@
 @import "@digi/arbetsformedlingen/dist/digi-arbetsformedlingen/digi-arbetsformedlingen.css";
 @import "@digi/arbetsformedlingen/dist/digi-arbetsformedlingen/fonts/src/fonts.css";
 
+/* Här lägger vi in färg-variabler: */
+ 
 :root {
-  --digi--color--text--inverted:#FCF7EB;
-  --digi--color--background--inverted-1: #267E5B; 
-  --digi--color--border--inverted-3: #FCF7EB; 
-  --digi--color--text--primary: #FCF7EB; 
-  }
+
+    /* Button colors */
+    --digi--color--background--inverted-1: #267e5b;
+    /* Hover */
+    --digi--color--background--inverted-6: #1d4e37;
+
+    /* Link text color */
+    --digi--color--text--link: #377d5c;
+    
+    /* Default white color: */
+    --digi--color--background--primary: #f3f0e6;
+    
+    /* Pagination: */
+    --digi--color--text--secondary: #000;
+    --digi--color--border--secondary: #377d5c;
+    --digi--color--border--inverted-2: #1d4e37;
+    --digi--button--color--border--primary--default: #377d5c;
+    --digi--button--color--border--primary--hover: #377d5c;
+    --digi--button--color--border--primary--active: #377d5c;
+    
+    /* Pagination btn non-active hover */
+    --digi--color--background--inverted-5: #d4e9db;
+} 
+
+	--digi--color--text--inverted: #fcf7eb;
+	--digi--color--border--inverted-3: #fcf7eb;
+	--digi--color--text--primary: #267e5b;
+
+main, body {
+    background-color: #f3f0e6;
+}
 
   .ns-footer {
 	--digi--gutter--largest-2: 0;
