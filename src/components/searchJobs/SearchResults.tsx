@@ -32,7 +32,7 @@ export const SearchResults = ({ jobs }: SearchResultsProps) => {
 						afMarginBottom
 						key={job.id}
 					>
-						<DigiLink afHref="#">
+						<DigiLink afHref="#" hideVisitedColor>
 							<h3>{job.headline}</h3>
 						</DigiLink>
 						<DigiTypographyMeta afVariation={TypographyMetaVariation.PRIMARY}>
