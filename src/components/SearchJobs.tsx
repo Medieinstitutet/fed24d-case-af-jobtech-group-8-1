@@ -28,7 +28,15 @@ export const SearchJobs = () => {
 	const [jobAds, setJobAds] = useState<IJobAdBrief[]>([]);
 	const [totalPages, setTotalPages] = useState(1);
 	const [totalResults, setTotalResults] = useState(0);
-	const [page, setPage] = useState(1);
+
+	const [searchParams, setSearchParams] = useSearchParams();
+
+	const pageParam = Number(searchParams.get("page")) || 1;
+	const [page, setPage] = useState(pageParam);
+
+	useEffect(() => {
+		setPage(pageParam);
+	}, [pageParam]);
 
 	useEffect(() => {
 		const fetchJobAds = async () => {
@@ -46,7 +54,10 @@ export const SearchJobs = () => {
 		fetchJobAds();
 	}, [page, searchInput]);
 
-	console.log(searchInput);
+	const handlePageChange = (e: CustomEvent<number>) => {
+		const newPage = e.detail;
+		setSearchParams({ page: String(newPage) });
+	};
 
 	return (
 		<>
