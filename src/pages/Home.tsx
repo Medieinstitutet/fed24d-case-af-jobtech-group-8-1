@@ -1,3 +1,9 @@
+import { SearchJobs } from "../components/searchJobs/SearchJobs";
+
 export const Home = () => {
-	return <main>Detta är vår startsida.</main>;
+	return (
+		<>
+			<SearchJobs />
+		</>
+	);
 };
