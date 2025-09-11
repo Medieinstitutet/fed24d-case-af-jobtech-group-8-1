@@ -2,13 +2,13 @@
 @import "@digi/arbetsformedlingen/dist/digi-arbetsformedlingen/fonts/src/fonts.css";
 
 :root {
-	--digi--color--text--inverted: #fcf7eb;
-	--digi--color--background--inverted-1: #267e5b;
-	--digi--color--border--inverted-3: #fcf7eb;
-	--digi--color--text--primary: #fcf7eb;
-}
+  --digi--color--text--inverted:#FCF7EB;
+  --digi--color--background--inverted-1: #267E5B; 
+  --digi--color--border--inverted-3: #FCF7EB; 
+  --digi--color--text--primary: #FCF7EB; 
+  }
 
-.ns-footer {
+  .ns-footer {
 	--digi--gutter--largest-2: 0;
 }
 
@@ -36,4 +36,5 @@
 	display: block;
 	height: auto;
 }
+  
 
