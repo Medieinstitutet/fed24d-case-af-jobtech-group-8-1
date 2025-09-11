@@ -1,8 +1,27 @@
-import { FormInputSearchVariation, FormInputType } from "@digi/arbetsformedlingen";
-import { DigiFormInputSearch, DigiNavigationPagination } from "@digi/arbetsformedlingen-react";
+import {
+	FormInputSearchVariation,
+	FormInputType,
+	LayoutBlockContainer,
+	LayoutBlockVariation,
+	LayoutContainerVariation,
+	TypographyMetaVariation,
+	TypographyTimeVariation,
+	TypographyVariation,
+} from "@digi/arbetsformedlingen";
+import {
+	DigiFormInputSearch,
+	DigiLayoutBlock,
+	DigiLayoutContainer,
+	DigiNavigationPagination,
+	DigiTypography,
+	DigiTypographyMeta,
+	DigiTypographyPreamble,
+	DigiTypographyTime,
+} from "@digi/arbetsformedlingen-react";
 import { useState, useEffect } from "react";
 import type { IJobAdBrief } from "../models/IJobAd";
 import { getJobAds } from "../services/jobAdsService";
+import { useSearchParams } from "react-router";
 
 export const SearchJobs = () => {
 	const [searchInput, setSearchInput] = useState("");
@@ -40,18 +59,31 @@ export const SearchJobs = () => {
 				onAfOnChange={(e) => setSearchInput(String((e.target as HTMLDigiFormInputElement).value))}
 			></DigiFormInputSearch>
 
-			<section>
-				<h2>Sökresultat:</h2>
-				<ul>
+			<DigiLayoutBlock afVariation={LayoutBlockVariation.PRIMARY} afContainer={LayoutBlockContainer.FLUID}>
+				<DigiTypography afVariation={TypographyVariation.LARGE}>
+					<h2>Sökresultat:</h2>
 					{jobAds.map((job) => (
-						<article key={job.id}>
+						<DigiLayoutBlock
+							afVariation={LayoutBlockVariation.PRIMARY}
+							afContainer={LayoutBlockContainer.FLUID}
+							afVerticalPadding
+							key={job.id}
+						>
 							<h3>{job.headline}</h3>
-							<p>{job.employer.name}</p>
-							<p>Publicerad: {job.publication_date}</p>
-						</article>
+							<DigiTypographyMeta afVariation={TypographyMetaVariation.PRIMARY}>
+								<DigiTypographyPreamble>{job.employer.name}</DigiTypographyPreamble>
+								<p slot="secondary">
+									Publicerad:{" "}
+									<DigiTypographyTime
+										afVariation={TypographyTimeVariation.PRETTY}
+										afDateTime={job.publication_date}
+									></DigiTypographyTime>
+								</p>
+							</DigiTypographyMeta>
+						</DigiLayoutBlock>
 					))}
-				</ul>
-			</section>
+				</DigiTypography>
+			</DigiLayoutBlock>
 			<DigiNavigationPagination
 				afTotalPages={totalPages}
 				afInitActivePage={1}
@@ -59,7 +91,7 @@ export const SearchJobs = () => {
 				afCurrentResultStart={1}
 				afCurrentResultEnd={10}
 				afTotalResults={totalResults}
-				// onAfOnPageChange={}
+				onAfOnPageChange={handlePageChange}
 			></DigiNavigationPagination>
 		</>
 	);
