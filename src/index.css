@@ -26,12 +26,13 @@
     
     /* Pagination btn non-active hover */
     --digi--color--background--inverted-5: #d4e9db;
-} 
-
 	--digi--color--text--inverted: #fcf7eb;
 	--digi--color--border--inverted-3: #fcf7eb;
 	--digi--color--text--primary: #267e5b;
 
+} 
+
+	
 main, body {
     background-color: #f3f0e6;
 }
