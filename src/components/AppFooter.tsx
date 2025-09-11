@@ -2,9 +2,11 @@ import { DigiFooter, DigiFooterCard } from "@digi/arbetsformedlingen-react";
 
 import { FooterVariation, FooterCardVariation } from "@digi/arbetsformedlingen";
 
+import logoUrl from "../assets/logo-nextstep.svg?url";
+
 export default function AppFooter() {
 	return (
-		<DigiFooter afVariation={FooterVariation.LARGE}>
+		<DigiFooter className="ns-footer" afVariation={FooterVariation.LARGE}>
 			<div slot="content-top">
 				<div>
 					<DigiFooterCard afType={FooterCardVariation.ICON}>
@@ -66,13 +68,11 @@ export default function AppFooter() {
 					</DigiFooterCard>
 				</div>
 			</div>
-			<div slot="content-bottom-left">
-				<div slot="content-bottom-left">
-					<div>
-						<p>här sätter vi logga</p>
-					</div>
-				</div>
-			</div>
+
+			<div slot="content-bottom-left" className="ns-footer__bottom-left">
+  <img src={logoUrl} alt="Next Step" width={200} height={60} className="ns-footer__logo" />
+</div>
+
 			<div slot="content-bottom-right">
 				<p>Följ oss på</p>
 				<a href="#">LinkedIn</a>
