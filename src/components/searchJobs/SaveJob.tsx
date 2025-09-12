@@ -11,12 +11,6 @@ type SaveJobProps = {
 };
 
 export const SaveJob = ({ isSaved, toggleSaved }: SaveJobProps) => {
-	// const [buttonText, setButtonText] = useState('Spara');
-
-	// const handleClick = () => {
-	// 	setButtonText(isSaved ? "Ta bort" : "Spara");
-	// 	toggleSaved();
-	// }
 
 	return (
 		<DigiButton afVariation={ButtonVariation.FUNCTION} afType={ButtonType.BUTTON} onAfOnClick={toggleSaved}>

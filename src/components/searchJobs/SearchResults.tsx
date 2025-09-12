@@ -18,38 +18,14 @@ import {
 } from "@digi/arbetsformedlingen-react";
 import type { IJobAdBrief } from "../../models/IJobAd";
 import { SaveJob } from "./SaveJob";
-import { useEffect, useState } from "react";
+import { useSavedJobs } from "../../hooks/useSavedJobs";
 
 type SearchResultsProps = {
 	jobs: IJobAdBrief[];
 };
 
-const LOCAL_KEY = "savedJobsNextStep";
-
-const getSavedJobs = (): IJobAdBrief[] => {
-	return JSON.parse(localStorage.getItem(LOCAL_KEY) || "[]");
-};
-
 export const SearchResults = ({ jobs }: SearchResultsProps) => {
-	const [savedJobs, setSavedJobs] = useState<IJobAdBrief[]>(getSavedJobs());
-
-	useEffect(() => {
-		const onStorage = () => setSavedJobs(getSavedJobs());
-		window.addEventListener("storage", onStorage);
-		return () => window.removeEventListener("storage", onStorage);
-	}, []);
-
-	const handleToggleSave = (job: IJobAdBrief) => {
-		let updatedJobs: IJobAdBrief[];
-		if (savedJobs.some(j => j.id === job.id)) {
-			updatedJobs = savedJobs.filter((j) => j.id !== job.id);
-		} else {
-			updatedJobs = [...savedJobs, job];
-		}
-
-		setSavedJobs(updatedJobs);
-		localStorage.setItem(LOCAL_KEY, JSON.stringify(updatedJobs));
-	};
+	const { isSaved, handleToggleSave } = useSavedJobs();
 
 	return (
 		<DigiLayoutBlock afVariation={LayoutBlockVariation.PRIMARY} afContainer={LayoutBlockContainer.FLUID}>
@@ -82,7 +58,7 @@ export const SearchResults = ({ jobs }: SearchResultsProps) => {
 								/>
 							</p>
 							<div style={{ marginLeft: "auto", justifySelf: "end", textAlign: "right" }}>
-								<SaveJob isSaved={savedJobs.some((j) => j.id === job.id)} toggleSaved={() => handleToggleSave(job)} />
+								<SaveJob isSaved={isSaved(job.id)} toggleSaved={() => handleToggleSave(job)} />
 							</div>
 						</DigiLayoutColumns>
 					</DigiLayoutBlock>
