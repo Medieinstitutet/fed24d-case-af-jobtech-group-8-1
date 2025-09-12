@@ -1,0 +1,8 @@
+export const SavedJobs = () => {
+
+    return (
+        <>
+        
+        </>
+    )
+}
