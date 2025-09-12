@@ -1,5 +1,9 @@
 import { ButtonType, ButtonVariation } from "@digi/arbetsformedlingen";
-import { DigiButton, DigiIconHeart, DigiIconTrash } from "@digi/arbetsformedlingen-react";
+import {
+	DigiButton,
+	DigiIconStar,
+	DigiIconStarReg,
+} from "@digi/arbetsformedlingen-react";
 
 type SaveJobProps = {
 	isSaved: boolean;
@@ -7,25 +11,24 @@ type SaveJobProps = {
 };
 
 export const SaveJob = ({ isSaved, toggleSaved }: SaveJobProps) => {
-	if (isSaved) {
-		return (
-			<DigiButton 
-                afVariation={ButtonVariation.SECONDARY} 
-                afType={ButtonType.BUTTON} 
-                onAfOnClick={toggleSaved}
-            >
-				Ta bort från sparade
-			</DigiButton>
-		);
-	}
+	// const [buttonText, setButtonText] = useState('Spara');
+
+	// const handleClick = () => {
+	// 	setButtonText(isSaved ? "Ta bort" : "Spara");
+	// 	toggleSaved();
+	// }
 
 	return (
-		<DigiButton 
-            afVariation={ButtonVariation.PRIMARY} 
-            afType={ButtonType.BUTTON} 
-            onAfOnClick={toggleSaved}
-        >
-			Spara dethär jobbet
+		<DigiButton afVariation={ButtonVariation.FUNCTION} afType={ButtonType.BUTTON} onAfOnClick={toggleSaved}>
+			<DigiIconStarReg
+				slot="icon"
+				style={{ display: isSaved ? "none" : "inline-flex", marginRight: "0.4rem" }}
+			/>
+			<DigiIconStar
+				slot="icon"
+				style={{ display: isSaved ? "inline-flex" : "none", marginRight: "0.4rem" }}
+			/>
+			{isSaved ? "Sparad" : "Spara"}
 		</DigiButton>
 	);
 };
