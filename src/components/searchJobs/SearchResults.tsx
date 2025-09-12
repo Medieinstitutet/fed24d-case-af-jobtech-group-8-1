@@ -24,29 +24,31 @@ type SearchResultsProps = {
 	jobs: IJobAdBrief[];
 };
 
-const getSavedJobIds = (): string[] => {
-	return JSON.parse(localStorage.getItem("savedJobsNextStep") || "[]");
+const LOCAL_KEY = "savedJobsNextStep";
+
+const getSavedJobs = (): IJobAdBrief[] => {
+	return JSON.parse(localStorage.getItem(LOCAL_KEY) || "[]");
 };
 
 export const SearchResults = ({ jobs }: SearchResultsProps) => {
-	const [savedJobIds, setSavedJobIds] = useState<string[]>(getSavedJobIds());
+	const [savedJobs, setSavedJobs] = useState<IJobAdBrief[]>(getSavedJobs());
 
 	useEffect(() => {
-		const onStorage = () => setSavedJobIds(getSavedJobIds());
+		const onStorage = () => setSavedJobs(getSavedJobs());
 		window.addEventListener("storage", onStorage);
 		return () => window.removeEventListener("storage", onStorage);
 	}, []);
 
 	const handleToggleSave = (job: IJobAdBrief) => {
-		let updatedIds: string[];
-		if (savedJobIds.includes(job.id)) {
-			updatedIds = savedJobIds.filter((id) => id !== job.id);
+		let updatedJobs: IJobAdBrief[];
+		if (savedJobs.some(j => j.id === job.id)) {
+			updatedJobs = savedJobs.filter((j) => j.id !== job.id);
 		} else {
-			updatedIds = [...savedJobIds, job.id];
+			updatedJobs = [...savedJobs, job];
 		}
 
-		setSavedJobIds(updatedIds);
-		localStorage.setItem("savedJobsNextStep", JSON.stringify(updatedIds));
+		setSavedJobs(updatedJobs);
+		localStorage.setItem(LOCAL_KEY, JSON.stringify(updatedJobs));
 	};
 
 	return (
@@ -80,7 +82,7 @@ export const SearchResults = ({ jobs }: SearchResultsProps) => {
 								/>
 							</p>
 							<div style={{ marginLeft: "auto", justifySelf: "end", textAlign: "right" }}>
-								<SaveJob isSaved={savedJobIds.includes(job.id)} toggleSaved={() => handleToggleSave(job)} />
+								<SaveJob isSaved={savedJobs.some((j) => j.id === job.id)} toggleSaved={() => handleToggleSave(job)} />
 							</div>
 						</DigiLayoutColumns>
 					</DigiLayoutBlock>
