@@ -44,6 +44,9 @@ export const AppHeader = () => {
 							<a href="/">Sök jobb</a>
 						</DigiHeaderNavigationItem>
 						<DigiHeaderNavigationItem>
+							<a href="/saved-jobs">Dina sparade annonser</a>
+						</DigiHeaderNavigationItem>
+						<DigiHeaderNavigationItem>
 							<a href="/">Praktik & LIA</a>
 						</DigiHeaderNavigationItem>
 						<DigiHeaderNavigationItem>
