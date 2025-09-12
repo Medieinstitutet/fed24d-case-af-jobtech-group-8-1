@@ -28,7 +28,7 @@ export const SaveJob = ({ isSaved, toggleSaved }: SaveJobProps) => {
 				slot="icon"
 				style={{ display: isSaved ? "inline-flex" : "none", marginRight: "0.4rem" }}
 			/>
-			{isSaved ? "Sparad" : "Spara"}
+			{isSaved ? "Ta bort" : "Spara"}
 		</DigiButton>
 	);
 };
