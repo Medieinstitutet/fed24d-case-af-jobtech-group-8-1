@@ -16,7 +16,7 @@ export const router = createBrowserRouter([
 			{
 				path: "/saved-jobs",
 				element: <SavedJobs />
-			}
+			},
 			{ path: "about", element: <AboutNextStep /> },
 		],
 	},
