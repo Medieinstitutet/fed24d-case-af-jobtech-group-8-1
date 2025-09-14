@@ -8,5 +8,6 @@ export const getJobAds = async (searchTerm: string, page: number) => {
 
 	const data = await get<IJobAdsResponse>(url);
 
-    return data;
+	return data;
 };
+

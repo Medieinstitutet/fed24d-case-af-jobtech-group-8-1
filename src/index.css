@@ -17,6 +17,11 @@
     
     /* Default white color: */
     --digi--color--background--primary: #f3f0e6;
+
+    /* Background */
+    --digi--layout-block--background--secondary: #f3f0e6; 
+    --digi--color--background--secondary: #f3f0e6; 
+    
     
     /* Pagination: */
     --digi--color--text--secondary: #000;

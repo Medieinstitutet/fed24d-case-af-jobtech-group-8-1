@@ -47,7 +47,7 @@ export const AppHeader = () => {
 							<a href="/">Praktik & LIA</a>
 						</DigiHeaderNavigationItem>
 						<DigiHeaderNavigationItem>
-							<a href="/">Om oss</a>
+						<a href="/about">Om oss</a>
 						</DigiHeaderNavigationItem>
 					</DigiHeaderNavigation>
 				</div>
