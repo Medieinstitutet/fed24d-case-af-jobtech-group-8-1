@@ -22,7 +22,6 @@ import {
 export default function AboutNextStep() {
   return (
     <main aria-labelledby="about-title">
-      {/* Intro (utökad) */}
       <DigiLayoutBlock
         afVariation={LayoutBlockVariation.PRIMARY}
         afContainer={LayoutBlockContainer.FLUID}
@@ -38,7 +37,7 @@ export default function AboutNextStep() {
         <DigiTypography afVariation={TypographyVariation.LARGE}>
           <p id="about-title" style={{ maxWidth: 900, marginTop: 0 }}>
             Next Step är ett studentdrivet projekt som hjälper unga att hitta sin
-            väg in i arbetslivet – med fokus på <strong>praktik</strong>,{" "}
+            väg in i arbetslivet - med fokus på <strong>praktik</strong>,{" "}
             <strong>trainee</strong> och <strong>junior</strong>roller.
           </p>
         </DigiTypography>
@@ -51,7 +50,7 @@ export default function AboutNextStep() {
             transparent och mindre tidskrävande.
           </p>
           <p style={{ maxWidth: 900 }}>
-            Tjänsten uppdateras löpande av studenter – i nära dialog med
+            Tjänsten uppdateras löpande av studenter - i nära dialog med
             användare, skolor och arbetsgivare. Har du idéer eller saknar du något?
             Hör gärna av dig!
           </p>
@@ -63,7 +62,7 @@ export default function AboutNextStep() {
         >
           <li>Fokuserade sökningar på praktik, LIA, trainee och juniorroller</li>
           <li>Klart och enkelt gränssnitt med tydlig feedback</li>
-          <li>Byggt på öppna data – lätt att förstå och vidareutveckla</li>
+          <li>Byggt på öppna data - lätt att förstå och vidareutveckla</li>
         </DigiList>
 
         <div style={{ marginTop: "1rem" }}>
@@ -73,9 +72,6 @@ export default function AboutNextStep() {
         </div>
       </DigiLayoutBlock>
 
-      {/* --- resten av din sida oförändrad --- */}
-
-      {/* Tips & info – två rader, 3 kort i varje */}
       <DigiLayoutBlock
         afVariation={LayoutBlockVariation.PRIMARY}
         afContainer={LayoutBlockContainer.FLUID}
@@ -86,7 +82,6 @@ export default function AboutNextStep() {
           <h2 style={{ marginTop: 0 }}>Tips och info</h2>
         </DigiTypography>
 
-        {/* Rad 1 */}
         <DigiLayoutBlock
           afVariation={LayoutBlockVariation.PRIMARY}
           afContainer={LayoutBlockContainer.FLUID}
@@ -141,14 +136,13 @@ export default function AboutNextStep() {
               afLinkText="Få en övningsfrågebank"
             >
               <p>
-                Läs på om arbetsgivaren. Ha 2–3 exempel som visar dina styrkor och
+                Läs på om arbetsgivaren. Ha 2-3 exempel som visar dina styrkor och
                 ställ frågor om team, handledning och förväntningar.
               </p>
             </DigiInfoCard>
           </div>
         </DigiLayoutBlock>
 
-        {/* Rad 2 */}
         <DigiLayoutBlock
           afVariation={LayoutBlockVariation.PRIMARY}
           afContainer={LayoutBlockContainer.FLUID}
@@ -201,7 +195,7 @@ export default function AboutNextStep() {
               afLinkText="Få feedback"
             >
               <p>
-                Visa 2–4 projekt med din roll och resultat. Lägg till livesida eller
+                Visa 2-4 projekt med din roll och resultat. Lägg till livesida eller
                 skärmdumpar. Kvalitet och tydlighet slår mängd.
               </p>
             </DigiInfoCard>
