@@ -32,7 +32,6 @@ export const SearchResults = ({ jobs }: SearchResultsProps) => {
 			<DigiTypography afVariation={TypographyVariation.LARGE}>
 				<h2>Sökresultat:</h2>
 				{jobs.map((job) => (
-					// Om det ska vara genomskinliga kan vi ändra till <DigiLayoutContainer afNoGutter afVerticalPadding key={job.id}> + margins om vi vill
 					<DigiLayoutBlock
 						afVariation={LayoutBlockVariation.SECONDARY}
 						afContainer={LayoutBlockContainer.FLUID}
