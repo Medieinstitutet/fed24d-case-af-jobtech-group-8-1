@@ -1,4 +1,4 @@
-import { LayoutBlockVariation, LayoutBlockContainer, TypographyVariation, TypographyMetaVariation, LayoutColumnsElement, TypographyTimeVariation } from "@digi/arbetsformedlingen";
+import { LayoutBlockVariation, LayoutBlockContainer, TypographyVariation, TypographyMetaVariation, LayoutColumnsElement, TypographyTimeVariation, LayoutContainerVariation } from "@digi/arbetsformedlingen";
 import { DigiLayoutBlock, DigiTypography, DigiLink, DigiLayoutContainer, DigiTypographyMeta, DigiTypographyPreamble, DigiLayoutColumns, DigiTypographyTime } from "@digi/arbetsformedlingen-react";
 import { SaveJob } from "../components/searchJobs/SaveJob";
 import { useSavedJobs } from "../hooks/useSavedJobs";
@@ -51,7 +51,7 @@ export const SavedJobs = () => {
 						<DigiLink afHref="#" hideVisitedColor>
 							<h3>{job.headline}</h3>
 						</DigiLink>
-						<DigiLayoutContainer afNoGutter afMarginBottom>
+						<DigiLayoutContainer afNoGutter afMarginBottom afVariation={LayoutContainerVariation.FLUID}>
 							<DigiTypographyMeta afVariation={TypographyMetaVariation.PRIMARY}>
 								<DigiTypographyPreamble>{job.employer.name}</DigiTypographyPreamble>
 								<p slot="secondary">{job.workplace_address.municipality}</p>
