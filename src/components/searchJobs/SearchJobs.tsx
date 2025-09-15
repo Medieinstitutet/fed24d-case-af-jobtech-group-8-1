@@ -43,7 +43,9 @@ export const SearchJobs = () => {
     <>
       <SearchInput value={searchInput} onChange={setSearchInput} />
       <SearchResults jobs={jobAds} />
-      <Pagination totalPages={totalPages} totalResults={totalResults} onPageChange={handlePageChange} />
+      {jobAds.length > 0 && 
+        <Pagination totalPages={totalPages} totalResults={totalResults} onPageChange={handlePageChange} />
+      }
     </>
   );
 };

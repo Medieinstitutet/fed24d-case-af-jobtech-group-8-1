@@ -20,6 +20,7 @@ import {
 import type { IJobAdBrief } from "../../models/IJobAd";
 import { SaveJob } from "./SaveJob";
 import { useSavedJobs } from "../../hooks/useSavedJobs";
+import { NoResults } from "../NoResults";
 
 type SearchResultsProps = {
 	jobs: IJobAdBrief[];
@@ -28,8 +29,16 @@ type SearchResultsProps = {
 export const SearchResults = ({ jobs }: SearchResultsProps) => {
 	const { isSaved, handleToggleSave } = useSavedJobs();
 
+	if (jobs.length === 0) {
+		return (
+			<>
+				<NoResults page="Sökresultat:" headline="Tyvärr hittade vi inga annonser för din sökning." message="Var vanlig försök igen med ett annat sök-ord."/>
+			</>
+		)
+	}
+
 	return (
-		<DigiLayoutBlock afVariation={LayoutBlockVariation.PRIMARY} afContainer={LayoutBlockContainer.FLUID}>
+		<DigiLayoutBlock afVariation={LayoutBlockVariation.PRIMARY} afContainer={LayoutBlockContainer.FLUID} afMarginBottom afMarginTop>
 			<DigiTypography afVariation={TypographyVariation.LARGE}>
 				<h2>Sökresultat:</h2>
 				{jobs.map((job) => (
