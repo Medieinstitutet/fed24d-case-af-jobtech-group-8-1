@@ -5,7 +5,7 @@ import {
 	DigiHeaderNavigationItem,
 } from "@digi/arbetsformedlingen-react";
 import logo from "../assets/logo-nextstep.svg";
-import { useLocation } from "react-router";
+import { NavLink, useLocation } from "react-router";
 
 
 export const AppHeader = () => {
@@ -48,16 +48,16 @@ export const AppHeader = () => {
 						afNavAriaLabel="Huvudmeny"
 					>
 						<DigiHeaderNavigationItem afCurrentPage={currentPath === "/" ? true : false}>
-							<a href="/">Sök jobb</a>
+							<NavLink to={"/"}>Sök jobb	</NavLink>
 						</DigiHeaderNavigationItem>
 						<DigiHeaderNavigationItem afCurrentPage={currentPath === "/saved-jobs" ? true : false}>
-							<a href="/saved-jobs">Dina sparade annonser</a>
+							<NavLink to={"/saved-jobs"}>Dina sparade annonser</NavLink>
 						</DigiHeaderNavigationItem>
 						<DigiHeaderNavigationItem>
-							<a href="/">Praktik & LIA</a>
+							<NavLink to={"/"}>Praktik & LIA</NavLink>
 						</DigiHeaderNavigationItem>
 						<DigiHeaderNavigationItem>
-							<a href="/">Om oss</a>
+							<NavLink to={"/"}>Om oss</NavLink>
 						</DigiHeaderNavigationItem>
 					</DigiHeaderNavigation>
 				</div>
