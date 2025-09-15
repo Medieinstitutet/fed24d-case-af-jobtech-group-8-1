@@ -5,9 +5,16 @@ import {
 	DigiHeaderNavigationItem,
 } from "@digi/arbetsformedlingen-react";
 import logo from "../assets/logo-nextstep.svg";
+import { useLocation } from "react-router";
 
 
 export const AppHeader = () => {
+
+	const location = useLocation();
+	const currentPath = location.pathname;
+
+	console.log(currentPath);
+
 	return (
 		<>
 			<DigiHeader afHideSystemName={true} afMenuButtonText="Meny">
@@ -40,10 +47,10 @@ export const AppHeader = () => {
 						afCloseButtonAriaLabel="Stäng meny"
 						afNavAriaLabel="Huvudmeny"
 					>
-						<DigiHeaderNavigationItem afCurrentPage={true}>
+						<DigiHeaderNavigationItem afCurrentPage={currentPath === "/" ? true : false}>
 							<a href="/">Sök jobb</a>
 						</DigiHeaderNavigationItem>
-						<DigiHeaderNavigationItem>
+						<DigiHeaderNavigationItem afCurrentPage={currentPath === "/saved-jobs" ? true : false}>
 							<a href="/saved-jobs">Dina sparade annonser</a>
 						</DigiHeaderNavigationItem>
 						<DigiHeaderNavigationItem>
