@@ -4,6 +4,7 @@ import type { IDuration } from "./IDuration";
 import type { IEmployer } from "./IEmployer";
 import type { IEmploymentType } from "./IEmploymentType";
 import type { IOccupation } from "./IOccupation";
+import type { ISalaryType } from "./ISalaryType";
 import type { IWorkingHours } from "./IWorkingHours";
 import type { IWorkplace_address } from "./IWorkplace_address";
 
@@ -22,11 +23,10 @@ export interface IJobAdDetailed extends IJobAdBrief {
 	logo_url: string | null;
 	number_of_vacancies: number;
 	description: IDescription;
-	// salary_type:
+	salary_type?: ISalaryType;
 	salary_description: string;
 	working_hours_type: IWorkingHours;
 	duration: IDuration;
-	// scope_of_work:
 	application_details?: IApplicationDetails;
 	source_type: string;
 }
