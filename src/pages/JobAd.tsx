@@ -7,6 +7,7 @@ import { LayoutBlockVariation, LayoutColumnsElement, LayoutColumnsVariation } fr
 import { JobAdDescription } from "../components/jobAd/JobAdDescription";
 import { JobAdApply } from "../components/jobAd/JobAdApply";
 import { JobAdDetails } from "../components/jobAd/JobAdDetails";
+import { LoadingSpinner } from "../components/LoadingSpinner";
 
 export const JobAd = () => {
 	const { id } = useParams<{ id: string }>();
@@ -28,8 +29,9 @@ export const JobAd = () => {
 		fetchJobAd();
 	}, [id]);
 
+	// Show loader while fetching data
 	if (!jobAd) {
-		return <div>Laddar...</div>;
+		return <LoadingSpinner />;
 	}
 
 	return (
