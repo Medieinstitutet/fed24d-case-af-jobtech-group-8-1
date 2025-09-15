@@ -5,6 +5,7 @@ import {
 	TypographyMetaVariation,
 	TypographyTimeVariation,
 	LayoutColumnsElement,
+	LayoutContainerVariation,
 } from "@digi/arbetsformedlingen";
 import {
 	DigiLayoutBlock,
@@ -43,7 +44,7 @@ export const SearchResults = ({ jobs }: SearchResultsProps) => {
 						<DigiLink afHref="#" hideVisitedColor>
 							<h3>{job.headline}</h3>
 						</DigiLink>
-						<DigiLayoutContainer afNoGutter afMarginBottom>
+						<DigiLayoutContainer afNoGutter afMarginBottom afVariation={LayoutContainerVariation.FLUID}>
 							<DigiTypographyMeta afVariation={TypographyMetaVariation.PRIMARY}>
 								<DigiTypographyPreamble>{job.employer.name}</DigiTypographyPreamble>
 								<p slot="secondary">{job.workplace_address.municipality}</p>
