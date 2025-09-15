@@ -53,10 +53,10 @@ export const AppHeader = () => {
 						<DigiHeaderNavigationItem afCurrentPage={currentPath === "/saved-jobs" ? true : false}>
 							<NavLink to={"/saved-jobs"}>Dina sparade annonser</NavLink>
 						</DigiHeaderNavigationItem>
-						<DigiHeaderNavigationItem>
+						<DigiHeaderNavigationItem afCurrentPage={currentPath === "/intern-lia" ? true : false}>
 							<NavLink to={"/"}>Praktik & LIA</NavLink>
 						</DigiHeaderNavigationItem>
-						<DigiHeaderNavigationItem>
+						<DigiHeaderNavigationItem afCurrentPage={currentPath === "/about" ? true : false}>
 							<NavLink to={"/"}>Om oss</NavLink>
 						</DigiHeaderNavigationItem>
 					</DigiHeaderNavigation>
