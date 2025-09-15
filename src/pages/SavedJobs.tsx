@@ -4,6 +4,7 @@ import { SaveJob } from "../components/searchJobs/SaveJob";
 import { useSavedJobs } from "../hooks/useSavedJobs";
 import type { IJobAdBrief } from "../models/IJobAd";
 import { useEffect, useState } from "react";
+import { NoResults } from "../components/NoResults";
 
 export const SavedJobs = () => {
 	const { savedJobs, isSaved, handleToggleSave } = useSavedJobs();
@@ -30,13 +31,13 @@ export const SavedJobs = () => {
     if (savedJobs.length === 0) {
         return (
             <>
-                <p>Lägg in en komponent här som säger att det inte finns några sparade jobb</p>
+                <NoResults page="Dina sparade jobb" headline="Du har inga sparade annonser!" message="Om du trycker på spara-knappen på en annons kommer den att visas här."/>
             </>
         )
     }
 
 	return (
-		<DigiLayoutBlock afVariation={LayoutBlockVariation.PRIMARY} afContainer={LayoutBlockContainer.FLUID}>
+		<DigiLayoutBlock afVariation={LayoutBlockVariation.PRIMARY} afContainer={LayoutBlockContainer.FLUID} afMarginBottom afMarginTop>
 			<DigiTypography afVariation={TypographyVariation.LARGE}>
 				<h2>Dina sparade jobb</h2>
 				{jobs.map((job) => (
