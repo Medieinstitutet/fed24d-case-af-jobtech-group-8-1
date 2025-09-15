@@ -6,7 +6,7 @@ import { Pagination } from "./Pagination";
 import { SearchResults } from "./SearchResults";
 import { LocationFilter } from "./LocationFilter";
 import { getJobAds } from "../../services/jobAdsService";
-import { getMunicipalitiesForQuery } from "../../services/municipalitiesService";
+import { getAllMunicipalities, type MunicipalityOption } from "../../services/municipalitiesService";
 
 export const SearchJobs = () => {
   const [searchInput, setSearchInput] = useState("");
@@ -14,7 +14,7 @@ export const SearchJobs = () => {
   const [totalPages, setTotalPages] = useState(1);
   const [totalResults, setTotalResults] = useState(0);
 
-  const [municipalityOptions, setMunicipalityOptions] = useState<Array<{ id: string; name: string }>>([]);
+  const [municipalityOptions, setMunicipalityOptions] = useState<MunicipalityOption[]>([]);
   const [loadingMunicipalities, setLoadingMunicipalities] = useState(false);
 
   const [searchParams, setSearchParams] = useSearchParams();
@@ -27,51 +27,61 @@ export const SearchJobs = () => {
   useEffect(() => setPage(pageParam), [pageParam]);
   useEffect(() => setMunicipalityId(municipalityIdParam), [municipalityIdParam]);
 
+  const debouncedQuery = useDebouncedValue(searchInput, 300);
+
   useEffect(() => {
     let cancelled = false;
     (async () => {
       setLoadingMunicipalities(true);
       try {
-        const opts = await getMunicipalitiesForQuery(searchInput);
-        if (!cancelled) {
-          setMunicipalityOptions(opts.map(o => ({ id: o.id, name: o.name })));
-        }
+        const list = await getAllMunicipalities(); 
+        if (!cancelled) setMunicipalityOptions(list);
       } catch (e) {
         if (!cancelled) setMunicipalityOptions([]);
-        console.error("Failed to fetch municipality options:", e);
+        console.error(e);
       } finally {
         if (!cancelled) setLoadingMunicipalities(false);
       }
     })();
     return () => { cancelled = true; };
-  }, [searchInput]);
+  }, []);
 
+  useEffect(() => {
+    const current = Number(searchParams.get("page") || 1);
+    if (current !== 1) {
+      setSearchParams(
+        { page: "1", ...(municipalityId ? { municipality: municipalityId } : {}) },
+        { replace: true }
+      );
+    }
+    // eslint-disable-next-line react-hooks/exhaustive-deps
+  }, [debouncedQuery]);
+
+  
   useEffect(() => {
     let cancelled = false;
     (async () => {
-      try {
-        const data = await getJobAds({
-          searchTerm: searchInput,
-          page,
-          municipalityId: municipalityId || undefined,
-          limit: 10,
-        });
-        if (cancelled) return;
-        setJobAds(Array.isArray(data?.hits) ? data.hits : []);
-        const totalVal = Number(data?.total?.value ?? 0);
-        setTotalPages(Math.max(1, Math.ceil(totalVal / 10)));
-        setTotalResults(totalVal);
-      } catch (err) {
-        if (!cancelled) {
-          setJobAds([]);
-          setTotalPages(1);
-          setTotalResults(0);
-        }
-        console.error("Failed to fetch job ads:", err);
+      const data = await getJobAds({
+        searchTerm: debouncedQuery,
+        page,
+        municipalityId: municipalityId || undefined,
+        limit: 10,
+      });
+      if (cancelled) return;
+      setJobAds(Array.isArray(data?.hits) ? data.hits : []);
+      const totalVal = Number(data?.total?.value ?? 0);
+      setTotalPages(Math.max(1, Math.ceil(totalVal / 10)));
+      setTotalResults(totalVal);
+    })().catch((err) => {
+      if (!cancelled) {
+        setJobAds([]);
+        setTotalPages(1);
+        setTotalResults(0);
       }
-    })();
+      console.error("Failed to fetch job ads:", err);
+    });
     return () => { cancelled = true; };
-  }, [searchInput, page, municipalityId]);
+  }, [debouncedQuery, page, municipalityId]);
 
   const handlePageChange = (newPage: number) => {
     setSearchParams({ page: String(newPage), ...(municipalityId ? { municipality: municipalityId } : {}) });
@@ -97,6 +107,19 @@ export const SearchJobs = () => {
     </>
   );
 };
+
+function useDebouncedValue<T>(value: T, delayMs: number) {
+  const [debounced, setDebounced] = useState(value);
+  useEffect(() => {
+    const t = setTimeout(() => setDebounced(value), delayMs);
+    return () => clearTimeout(t);
+  }, [value, delayMs]);
+  return debounced;
+}
+
+
+
+
 
 
 
