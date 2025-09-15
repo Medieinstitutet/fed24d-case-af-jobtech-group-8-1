@@ -5,9 +5,16 @@ import {
 	DigiHeaderNavigationItem,
 } from "@digi/arbetsformedlingen-react";
 import logo from "../assets/logo-nextstep.svg";
+import { NavLink, useLocation } from "react-router";
 
 
 export const AppHeader = () => {
+
+	const location = useLocation();
+	const currentPath = location.pathname;
+
+	console.log(currentPath);
+
 	return (
 		<>
 			<DigiHeader afHideSystemName={true} afMenuButtonText="Meny">
@@ -40,17 +47,17 @@ export const AppHeader = () => {
 						afCloseButtonAriaLabel="Stäng meny"
 						afNavAriaLabel="Huvudmeny"
 					>
-						<DigiHeaderNavigationItem afCurrentPage={true}>
-							<a href="/">Sök jobb</a>
+						<DigiHeaderNavigationItem afCurrentPage={currentPath === "/" ? true : false}>
+							<NavLink to={"/"}>Sök jobb	</NavLink>
 						</DigiHeaderNavigationItem>
-						<DigiHeaderNavigationItem>
-							<a href="/saved-jobs">Dina sparade annonser</a>
+						<DigiHeaderNavigationItem afCurrentPage={currentPath === "/saved-jobs" ? true : false}>
+							<NavLink to={"/saved-jobs"}>Dina sparade annonser</NavLink>
 						</DigiHeaderNavigationItem>
-						<DigiHeaderNavigationItem>
-							<a href="/">Praktik & LIA</a>
+						<DigiHeaderNavigationItem afCurrentPage={currentPath === "/intern-lia" ? true : false}>
+							<NavLink to={"/"}>Praktik & LIA</NavLink>
 						</DigiHeaderNavigationItem>
-						<DigiHeaderNavigationItem>
-							<a href="/">Om oss</a>
+						<DigiHeaderNavigationItem afCurrentPage={currentPath === "/about" ? true : false}>
+							<NavLink to={"/"}>Om oss</NavLink>
 						</DigiHeaderNavigationItem>
 					</DigiHeaderNavigation>
 				</div>
