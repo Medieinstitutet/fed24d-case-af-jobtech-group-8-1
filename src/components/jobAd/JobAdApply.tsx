@@ -3,14 +3,9 @@ import {
 	InfoCardType,
 	InfoCardVariation,
 	InfoCardBorderPosition,
+	LayoutContainerVariation,
 } from "@digi/arbetsformedlingen";
-import {
-	DigiTypography,
-	DigiInfoCard,
-	DigiLayoutContainer,
-	DigiMediaImage,
-	DigiLinkExternal,
-} from "@digi/arbetsformedlingen-react";
+import { DigiTypography, DigiInfoCard, DigiLayoutContainer, DigiLinkExternal } from "@digi/arbetsformedlingen-react";
 import type { IJobAdDetailed } from "../../models/IJobAd";
 
 type JobAdApplyProps = {
@@ -28,27 +23,7 @@ export const JobAdApply = ({ jobAd }: JobAdApplyProps) => {
 					afVariation={InfoCardVariation.SECONDARY}
 					afBorderPosition={InfoCardBorderPosition.LEFT}
 				>
-					<DigiLayoutContainer afVerticalPadding={true}>
-						{jobAd.logo_url && (
-							<DigiMediaImage
-								afUnlazy
-								afWidth="100"
-								afSrc={jobAd.logo_url}
-								afAlt={`Logotyp för ${jobAd.employer.name}`}
-							/>
-						)}
-						<h3>{jobAd.employer.name}</h3>
-						<p>{jobAd.employer.workplace}</p>
-						<p>Ort: {jobAd.workplace_address.municipality}</p>
-						<p>{jobAd.employer.email}</p>
-
-						{jobAd.employer.url && (
-							<DigiLinkExternal afHref={jobAd.employer.url} afTarget="_blank">
-								Besök företaget hemsida
-							</DigiLinkExternal>
-						)}
-					</DigiLayoutContainer>
-					<DigiLayoutContainer afVerticalPadding={true}>
+					<DigiLayoutContainer afVariation={LayoutContainerVariation.NONE} afMarginTop={false}>
 						{jobAd.application_details?.url && (
 							<DigiLinkExternal afHref={jobAd.application_details.url} afTarget="_blank">
 								Ansök via företagets webbplats
@@ -65,9 +40,10 @@ export const JobAdApply = ({ jobAd }: JobAdApplyProps) => {
 								</p>
 							</div>
 						)}
-						<div>
-							<p>Ansök senast: {new Date(jobAd.application_deadline).toLocaleString("sv-SE")}</p>
-						</div>
+						<span>
+							Ange referens <strong>{jobAd.application_details?.reference}</strong> i ansökan
+						</span>
+						<p>Ansök senast: {new Date(jobAd.application_deadline).toLocaleString("sv-SE")}</p>
 					</DigiLayoutContainer>
 				</DigiInfoCard>
 			</DigiTypography>
