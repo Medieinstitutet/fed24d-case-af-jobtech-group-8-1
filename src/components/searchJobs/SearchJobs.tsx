@@ -96,11 +96,12 @@ export const SearchJobs = () => {
       <SearchInput value={searchInput} onChange={setSearchInput} />
 
       <LocationFilter
-        value={municipalityId}
-        onChange={handleMunicipalityChange}
-        options={municipalityOptions}
-        disabled={loadingMunicipalities}
-      />
+  value={municipalityId}
+  onChange={handleMunicipalityChange}
+  options={municipalityOptions}
+/>
+{loadingMunicipalities && <p style={{marginTop: 8}}>Laddar kommuner …</p>}
+
 
       <SearchResults jobs={jobAds} />
       <Pagination totalPages={totalPages} totalResults={totalResults} onPageChange={handlePageChange} />
