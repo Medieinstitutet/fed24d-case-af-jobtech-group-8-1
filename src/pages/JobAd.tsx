@@ -2,12 +2,13 @@ import { useEffect, useState } from "react";
 import { useParams } from "react-router";
 import { getJobAdById } from "../services/jobAdsService";
 import type { IJobAdDetailed } from "../models/IJobAd";
-import { DigiLayoutBlock, DigiLayoutColumns, DigiLayoutContainer } from "@digi/arbetsformedlingen-react";
+import { DigiLayoutBlock, DigiLayoutColumns, DigiTypography } from "@digi/arbetsformedlingen-react";
 import { LayoutBlockVariation, LayoutColumnsElement, LayoutColumnsVariation } from "@digi/arbetsformedlingen";
 import { JobAdDescription } from "../components/jobAd/JobAdDescription";
 import { JobAdApply } from "../components/jobAd/JobAdApply";
 import { JobAdDetails } from "../components/jobAd/JobAdDetails";
 import { LoadingSpinner } from "../components/LoadingSpinner";
+import { JobAdEmployer } from "../components/jobAd/JobAdEmployer";
 
 export const JobAd = () => {
 	const { id } = useParams<{ id: string }>();
@@ -35,18 +36,19 @@ export const JobAd = () => {
 	}
 
 	return (
-		<DigiLayoutBlock afVariation={LayoutBlockVariation.PRIMARY} afVerticalPadding={true}>
-			<DigiLayoutColumns afElement={LayoutColumnsElement.DIV} afVariation={LayoutColumnsVariation.TWO}>
-				<div>
-					<DigiLayoutContainer afVerticalPadding={true}>
+		<DigiTypography>
+			<DigiLayoutBlock afVariation={LayoutBlockVariation.PRIMARY} afVerticalPadding={true}>
+				<DigiLayoutColumns afElement={LayoutColumnsElement.DIV} afVariation={LayoutColumnsVariation.TWO}>
+					<DigiLayoutBlock afVariation={LayoutBlockVariation.SECONDARY} afVerticalPadding={true}>
 						<JobAdDetails jobAd={jobAd} />
-					</DigiLayoutContainer>
-					<DigiLayoutContainer afVerticalPadding={true}>
 						<JobAdDescription jobAd={jobAd} />
-					</DigiLayoutContainer>
-				</div>
-				<JobAdApply jobAd={jobAd} />
-			</DigiLayoutColumns>
-		</DigiLayoutBlock>
+					</DigiLayoutBlock>
+					<DigiLayoutBlock afVariation={LayoutBlockVariation.SECONDARY} afVerticalPadding={true}>
+						<JobAdEmployer jobAd={jobAd} />
+						<JobAdApply jobAd={jobAd} />
+					</DigiLayoutBlock>
+				</DigiLayoutColumns>
+			</DigiLayoutBlock>
+		</DigiTypography>
 	);
 };
