@@ -12,10 +12,20 @@ export const JobAd = () => {
 	const { id } = useParams<{ id: string }>();
 	const [jobAd, setJobAd] = useState<IJobAdDetailed>();
 
+	// Fetch job ad by ID from params
 	useEffect(() => {
-		if (id) {
-			getJobAdById(id).then(setJobAd);
-		}
+		const fetchJobAd = async () => {
+			if (id) {
+				try {
+					// await new Promise((resolve) => setTimeout(resolve, 3000)); // Simulate loading delay
+					const data = await getJobAdById(id);
+					setJobAd(data);
+				} catch (err) {
+					console.error("Something went wrong: ", err);
+				}
+			}
+		};
+		fetchJobAd();
 	}, [id]);
 
 	if (!jobAd) {
