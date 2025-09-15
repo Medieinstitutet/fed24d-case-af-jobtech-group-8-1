@@ -1,4 +1,4 @@
-import { DigiTypography, DigiTypographyMeta } from "@digi/arbetsformedlingen-react";
+import { DigiLayoutContainer, DigiTypographyMeta } from "@digi/arbetsformedlingen-react";
 import type { IJobAdDetailed } from "../../models/IJobAd";
 import { TypographyMetaVariation } from "@digi/arbetsformedlingen";
 
@@ -9,9 +9,14 @@ type JobAdDetailsProps = {
 export const JobAdDetails = ({ jobAd }: JobAdDetailsProps) => {
 	return (
 		<>
-			<DigiTypography>
-				<h2>{jobAd.headline}</h2>
-				<h3>{jobAd.employer.name}</h3>
+			<h2>{jobAd.headline}</h2>
+			<h3>{jobAd.employer.name}</h3>
+			<p>Ort: {jobAd.workplace_address.municipality}</p>
+			<DigiLayoutContainer afVerticalPadding={true}>
+				<DigiTypographyMeta afVariation={TypographyMetaVariation.PRIMARY}>
+					<p>Tjänst: </p>
+					<p slot="secondary">{jobAd.occupation.label} </p>
+				</DigiTypographyMeta>
 				<DigiTypographyMeta afVariation={TypographyMetaVariation.PRIMARY}>
 					<p>Antal tjänster: </p>
 					<p slot="secondary">{jobAd.number_of_vacancies} </p>
@@ -26,13 +31,13 @@ export const JobAdDetails = ({ jobAd }: JobAdDetailsProps) => {
 				</DigiTypographyMeta>
 				<DigiTypographyMeta afVariation={TypographyMetaVariation.PRIMARY}>
 					<p>Lön: </p>
-					<p slot="secondary">{jobAd.salary_description} </p>
+					<p slot="secondary">{jobAd.salary_type?.label || "Lön ej angiven"} </p>
 				</DigiTypographyMeta>
 				<DigiTypographyMeta afVariation={TypographyMetaVariation.PRIMARY}>
 					<p>Anställning: </p>
 					<p slot="secondary">{jobAd.employment_type.label} </p>
 				</DigiTypographyMeta>
-			</DigiTypography>
+			</DigiLayoutContainer>
 		</>
 	);
 };
