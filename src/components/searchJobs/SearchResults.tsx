@@ -18,8 +18,9 @@ import {
 	DigiLayoutColumns,
 } from "@digi/arbetsformedlingen-react";
 import type { IJobAdBrief } from "../../models/IJobAd";
-import { SaveJob } from "./SaveJob";
 import { useSavedJobs } from "../../hooks/useSavedJobs";
+import { NoResults } from "../NoResults";
+import { ResultPresentation } from "./ResultPresentation";
 
 type SearchResultsProps = { jobs: IJobAdBrief[] };
 
