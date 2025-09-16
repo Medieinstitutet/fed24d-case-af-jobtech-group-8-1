@@ -50,7 +50,7 @@ export const SearchResults = ({ jobs }: SearchResultsProps) => {
 						afMarginBottom
 						key={job.id}
 					>
-						<DigiLink afHref="#" hideVisitedColor>
+						<DigiLink afHref={`/jobad/${job.id}`} hideVisitedColor>
 							<h3>{job.headline}</h3>
 						</DigiLink>
 						<DigiLayoutContainer afNoGutter afMarginBottom afVariation={LayoutContainerVariation.FLUID}>
