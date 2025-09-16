@@ -33,8 +33,8 @@ export const SearchResults = ({ jobs }: SearchResultsProps) => {
 				<h2>Sökresultat:</h2>
 				<div>
 				{jobs.map((job) => (
+					// Om det ska vara genomskinliga kan vi ändra till <DigiLayoutContainer afNoGutter afVerticalPadding key={job.id}> + margins om vi vill
 					<ResultPresentation key={job.id} job={job} getIsSaved={isSaved} handleSaveBtn={handleToggleSave} />
-
 				))}
 				</div>
 			</DigiTypography>
