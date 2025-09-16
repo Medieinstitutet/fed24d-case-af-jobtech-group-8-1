@@ -10,7 +10,6 @@ import {
 	DigiLayoutBlock,
 	DigiLayoutColumns,
 	DigiLayoutContainer,
-	DigiLink,
 	DigiTypography,           
 	DigiTypographyMeta,
 	DigiTypographyPreamble,
@@ -18,6 +17,7 @@ import {
   } from "@digi/arbetsformedlingen-react";
   import { SaveJob } from "./SaveJob";
   import type { IJobAdBrief } from "../../models/IJobAd";
+import { Link } from "react-router";
   
   type ResultPresentationProps = {
 	job: IJobAdBrief;
@@ -34,9 +34,9 @@ import {
 		afMarginBottom
 	  >
 		<DigiTypography>
-		  <DigiLink afHref="#" hideVisitedColor>
+		  <Link to={`/jobad/${job.id}`}>
 			<h3 style={{ marginTop: 0 }}>{job.headline}</h3>
-		  </DigiLink>
+		  </Link>
   
 		  <DigiLayoutContainer afNoGutter afMarginBottom afVariation={LayoutContainerVariation.FLUID}>
 			<DigiTypographyMeta afVariation={TypographyMetaVariation.PRIMARY}>
