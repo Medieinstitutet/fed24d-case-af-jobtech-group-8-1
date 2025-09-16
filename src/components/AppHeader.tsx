@@ -57,7 +57,7 @@ export const AppHeader = () => {
 							<NavLink to={"/"}>Praktik & LIA</NavLink>
 						</DigiHeaderNavigationItem>
 						<DigiHeaderNavigationItem afCurrentPage={currentPath === "/about" ? true : false}>
-							<NavLink to={"/"}>Om oss</NavLink>
+							<NavLink to={"/about"}>Om oss</NavLink>
 						</DigiHeaderNavigationItem>
 					</DigiHeaderNavigation>
 				</div>

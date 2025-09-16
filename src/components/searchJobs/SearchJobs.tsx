@@ -7,6 +7,7 @@ import { SearchResults } from "./SearchResults";
 import { LocationFilter } from "./LocationFilter";
 import { getJobAds } from "../../services/jobAdsService";
 import { getAllMunicipalities, type MunicipalityOption } from "../../services/municipalitiesService";
+import { useSavedJobs } from "../../hooks/useSavedJobs";
 
 export const SearchJobs = () => {
   const [searchInput, setSearchInput] = useState("");
@@ -24,6 +25,8 @@ export const SearchJobs = () => {
   const [page, setPage] = useState(pageParam);
   const [municipalityId, setMunicipalityId] = useState(municipalityIdParam);
 
+  const { isSaved, handleToggleSave } = useSavedJobs();
+
   useEffect(() => setPage(pageParam), [pageParam]);
   useEffect(() => setMunicipalityId(municipalityIdParam), [municipalityIdParam]);
 
@@ -34,16 +37,17 @@ export const SearchJobs = () => {
     (async () => {
       setLoadingMunicipalities(true);
       try {
-        const list = await getAllMunicipalities(); 
+        const list = await getAllMunicipalities();
         if (!cancelled) setMunicipalityOptions(list);
-      } catch (e) {
+      } catch {
         if (!cancelled) setMunicipalityOptions([]);
-        console.error(e);
       } finally {
         if (!cancelled) setLoadingMunicipalities(false);
       }
     })();
-    return () => { cancelled = true; };
+    return () => {
+      cancelled = true;
+    };
   }, []);
 
   useEffect(() => {
@@ -57,7 +61,6 @@ export const SearchJobs = () => {
     // eslint-disable-next-line react-hooks/exhaustive-deps
   }, [debouncedQuery]);
 
-  
   useEffect(() => {
     let cancelled = false;
     (async () => {
@@ -68,19 +71,21 @@ export const SearchJobs = () => {
         limit: 10,
       });
       if (cancelled) return;
+
       setJobAds(Array.isArray(data?.hits) ? data.hits : []);
       const totalVal = Number(data?.total?.value ?? 0);
       setTotalPages(Math.max(1, Math.ceil(totalVal / 10)));
       setTotalResults(totalVal);
-    })().catch((err) => {
+    })().catch(() => {
       if (!cancelled) {
         setJobAds([]);
         setTotalPages(1);
         setTotalResults(0);
       }
-      console.error("Failed to fetch job ads:", err);
     });
-    return () => { cancelled = true; };
+    return () => {
+      cancelled = true;
+    };
   }, [debouncedQuery, page, municipalityId]);
 
   const handlePageChange = (newPage: number) => {
@@ -96,17 +101,19 @@ export const SearchJobs = () => {
       <SearchInput value={searchInput} onChange={setSearchInput} />
 
       <LocationFilter
-  value={municipalityId}
-  onChange={handleMunicipalityChange}
-  options={municipalityOptions}
-/>
-{loadingMunicipalities && <p style={{marginTop: 8}}>Laddar kommuner …</p>}
+        value={municipalityId}
+        onChange={handleMunicipalityChange}
+        options={municipalityOptions}
+      />
+      {loadingMunicipalities && <p style={{ marginTop: 8 }}>Laddar kommuner …</p>}
 
+      <SearchResults
+        jobs={jobAds}
+        getIsSaved={isSaved}
+        handleSaveBtn={handleToggleSave}
+      />
 
-      <SearchResults jobs={jobAds} />
-      {jobAds.length > 0 && 
-        <Pagination totalPages={totalPages} totalResults={totalResults} onPageChange={handlePageChange} />
-      }
+      <Pagination totalPages={totalPages} totalResults={totalResults} onPageChange={handlePageChange} />
     </>
   );
 };
@@ -119,11 +126,6 @@ function useDebouncedValue<T>(value: T, delayMs: number) {
   }, [value, delayMs]);
   return debounced;
 }
-
-
-
-
-
 
 
 

@@ -19,7 +19,7 @@ import {
 } from "@digi/arbetsformedlingen-react";
 import type { IJobAdBrief } from "../../models/IJobAd";
 import { useSavedJobs } from "../../hooks/useSavedJobs";
-import { NoResults } from "../NoResults";
+import { SaveJob } from "./SaveJob";
 import { ResultPresentation } from "./ResultPresentation";
 
 type SearchResultsProps = { jobs: IJobAdBrief[] };
@@ -74,6 +74,7 @@ export const SearchResults = ({ jobs }: SearchResultsProps) => {
 								</DigiLayoutColumns>
 							</DigiTypography>
 						</DigiLayoutBlock>
+						<ResultPresentation key={job.id} job={job} getIsSaved={isSaved} handleSaveBtn={handleToggleSave} />
 					</div>
 				))}
 			</div>
