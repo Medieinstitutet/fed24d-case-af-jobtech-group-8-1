@@ -21,14 +21,14 @@ export const SearchResults = ({ jobs }: SearchResultsProps) => {
 			<DigiLayoutBlock afVariation={LayoutBlockVariation.PRIMARY} afContainer={LayoutBlockContainer.FLUID}>
 				<DigiTypography afVariation={TypographyVariation.LARGE}>
 					<h2 style={{ marginTop: 0 }}>Sökresultat:</h2>
+					<div data-react-owned style={{ display: "grid", gap: "1rem" }}>
+						{jobs.map((job) => (
+								<ResultPresentation key={job.id} job={job} getIsSaved={isSaved} handleSaveBtn={handleToggleSave} />
+						))}
+					</div>
 				</DigiTypography>
 			</DigiLayoutBlock>
 
-			<div data-react-owned style={{ display: "grid", gap: "1rem" }}>
-				{jobs.map((job) => (
-						<ResultPresentation key={job.id} job={job} getIsSaved={isSaved} handleSaveBtn={handleToggleSave} />
-				))}
-			</div>
 		</>
 	);
 };
