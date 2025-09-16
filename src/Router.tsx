@@ -3,6 +3,7 @@ import { Layout } from "./pages/Layout";
 import { Home } from "./pages/Home";
 import { JobAd } from "./pages/JobAd";
 import { SavedJobs } from "./pages/SavedJobs";
+import AboutNextStep from "./pages/AboutNextStep";
 
 export const router = createBrowserRouter([
 	{
@@ -21,6 +22,8 @@ export const router = createBrowserRouter([
 				path: "/saved-jobs",
 				element: <SavedJobs />
 			},
+			{ path: "about", element: <AboutNextStep /> },
 		],
 	},
 ]);
+
