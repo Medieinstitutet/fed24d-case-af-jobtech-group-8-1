@@ -1,19 +1,37 @@
 import {
 	LayoutBlockContainer,
 	LayoutBlockVariation,
-	ListType,
+	LayoutColumnsElement,
+	LayoutColumnsVariation,
 	TypographyHeadingJumboLevel,
 	TypographyHeadingJumboVariation,
 } from "@digi/arbetsformedlingen";
 import {
 	DigiLayoutBlock,
-	DigiList,
+	DigiLayoutColumns,
+	DigiMediaImage,
 	DigiTypography,
 	DigiTypographyHeadingJumbo,
 	DigiTypographyPreamble,
 } from "@digi/arbetsformedlingen-react";
 
+import hero_img from "../assets/hero_img.svg";
+import { useScreenSize } from "../hooks/useScreensize";
+import { useEffect, useState } from "react";
+ 
 export const HeroSection = () => {
+
+	const [mobile, setMobile] = useState(false);
+	const { isMobile } = useScreenSize();
+
+	useEffect(() => {
+		const changeSize = () => {
+			setMobile(isMobile);
+		}
+
+		changeSize();
+	}, [isMobile]);
+
 	return (
 		<DigiLayoutBlock
 			afVariation={LayoutBlockVariation.TERTIARY}
@@ -25,23 +43,32 @@ export const HeroSection = () => {
 				afLevel={TypographyHeadingJumboLevel.H1}
 				afVariation={TypographyHeadingJumboVariation.SECONDARY}
 			></DigiTypographyHeadingJumbo>
-			<DigiTypography>
-                <DigiTypographyPreamble>
-                    NextStep är en digital tjänst som hjälper studenter och nyutexaminerade att navigera i jobbdjungeln.
-                    Genom att använda Arbetsförmedlingens öppna data samlar NextStep relevanta annonser för juniora roller,
-                    praktikplatser och första-jobb inom olika branscher.
-                </DigiTypographyPreamble>
-				<p>Med NextStep kan du:</p>
-				<DigiList afListType={ListType.BULLET}>
-					<li>Söka och filtrera jobb efter ort, bransch och anställningsform.</li>
-					<li>Spara favoriter och bygga din egen jobb­lista.</li>
-					<li>Inspireras av populära sökningar och se trender inom arbetsmarknaden.</li>
-				</DigiList>
-				<p>
-					Målet är att göra det enklare att ta steget från studier till arbetsliv, att hitta ditt första jobb,
-					din praktik eller trainee­plats. NextStep är din kompass mot framtiden.
-				</p>
-			</DigiTypography>
+			<div>
+				{mobile && (
+					<>
+						<DigiTypography>
+							<DigiTypographyPreamble>
+								NextStep är en digital tjänst som hjälper studenter och nyutexaminerade att navigera i jobbdjungeln.
+								Genom att använda Arbetsförmedlingens öppna data samlar NextStep relevanta annonser för juniora roller,
+								praktikplatser och första-jobb inom olika branscher.
+							</DigiTypographyPreamble>
+						</DigiTypography>
+						<DigiMediaImage afSrc={hero_img} afHeight="500" afWidth="500" afAlt="Illustration av en man som håller en kikare"/>
+					</>
+				)}
+				{!mobile && (
+					<DigiLayoutColumns afElement={LayoutColumnsElement.DIV} afVariation={LayoutColumnsVariation.TWO}>
+						<DigiTypography>
+							<DigiTypographyPreamble>
+								NextStep är en digital tjänst som hjälper studenter och nyutexaminerade att navigera i jobbdjungeln.
+								Genom att använda Arbetsförmedlingens öppna data samlar NextStep relevanta annonser för juniora roller,
+								praktikplatser och första-jobb inom olika branscher.
+							</DigiTypographyPreamble>
+						</DigiTypography>
+						<DigiMediaImage afSrc={hero_img} afHeight="500" afWidth="500" afAlt="Illustration av en man som håller en kikare"/>
+					</DigiLayoutColumns>
+				)}
+			</div>
 		</DigiLayoutBlock>
 	);
 };
