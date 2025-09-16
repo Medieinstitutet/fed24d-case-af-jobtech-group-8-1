@@ -5,6 +5,7 @@ import {
 	LayoutColumnsVariation,
 	TypographyHeadingJumboLevel,
 	TypographyHeadingJumboVariation,
+	TypographyVariation,
 } from "@digi/arbetsformedlingen";
 import {
 	DigiLayoutBlock,
@@ -12,7 +13,6 @@ import {
 	DigiMediaImage,
 	DigiTypography,
 	DigiTypographyHeadingJumbo,
-	DigiTypographyPreamble,
 } from "@digi/arbetsformedlingen-react";
 
 import hero_img from "../assets/hero_img.svg";
@@ -46,26 +46,30 @@ export const HeroSection = () => {
 			<div>
 				{mobile && (
 					<>
-						<DigiTypography>
-							<DigiTypographyPreamble>
+						<DigiTypography afVariation={TypographyVariation.LARGE}>
+							<p>
 								NextStep är en digital tjänst som hjälper studenter och nyutexaminerade att navigera i jobbdjungeln.
 								Genom att använda Arbetsförmedlingens öppna data samlar NextStep relevanta annonser för juniora roller,
 								praktikplatser och första-jobb inom olika branscher.
-							</DigiTypographyPreamble>
+							</p>
 						</DigiTypography>
-						<DigiMediaImage afSrc={hero_img} afHeight="500" afWidth="500" afAlt="Illustration av en man som håller en kikare"/>
+						<div style={{display: "flex", justifyContent: "center", alignItems: "flex-start", margin: "5rem 0"}}>
+							<DigiMediaImage afSrc={hero_img} afWidth="500" afAlt="Illustration av en man som håller en kikare"/>
+						</div>
 					</>
 				)}
 				{!mobile && (
 					<DigiLayoutColumns afElement={LayoutColumnsElement.DIV} afVariation={LayoutColumnsVariation.TWO}>
-						<DigiTypography>
-							<DigiTypographyPreamble>
+						<DigiTypography afVariation={TypographyVariation.LARGE}>
+							<p>
 								NextStep är en digital tjänst som hjälper studenter och nyutexaminerade att navigera i jobbdjungeln.
 								Genom att använda Arbetsförmedlingens öppna data samlar NextStep relevanta annonser för juniora roller,
 								praktikplatser och första-jobb inom olika branscher.
-							</DigiTypographyPreamble>
+							</p>
 						</DigiTypography>
-						<DigiMediaImage afSrc={hero_img} afHeight="500" afWidth="500" afAlt="Illustration av en man som håller en kikare"/>
+						<div style={{display: "flex", justifyContent: "center", alignItems: "flex-start"}}>
+							<DigiMediaImage afSrc={hero_img} afWidth="500" afAlt="Illustration av en man som håller en kikare"/>
+						</div>
 					</DigiLayoutColumns>
 				)}
 			</div>
