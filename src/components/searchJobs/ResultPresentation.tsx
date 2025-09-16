@@ -28,7 +28,7 @@ import {
   export const ResultPresentation = ({ job, getIsSaved, handleSaveBtn }: ResultPresentationProps) => {
 	return (
 	  <DigiLayoutBlock
-		afVariation={LayoutBlockVariation.SECONDARY}
+		afVariation={LayoutBlockVariation.TERTIARY}
 		afContainer={LayoutBlockContainer.FLUID}
 		afVerticalPadding
 		afMarginBottom
