@@ -7,7 +7,6 @@ import { SearchResults } from "./SearchResults";
 import { LocationFilter } from "./LocationFilter";
 import { getJobAds } from "../../services/jobAdsService";
 import { getAllMunicipalities, type MunicipalityOption } from "../../services/municipalitiesService";
-import { useSavedJobs } from "../../hooks/useSavedJobs";
 
 export const SearchJobs = () => {
   const [searchInput, setSearchInput] = useState("");
@@ -24,8 +23,6 @@ export const SearchJobs = () => {
 
   const [page, setPage] = useState(pageParam);
   const [municipalityId, setMunicipalityId] = useState(municipalityIdParam);
-
-  const { isSaved, handleToggleSave } = useSavedJobs();
 
   useEffect(() => setPage(pageParam), [pageParam]);
   useEffect(() => setMunicipalityId(municipalityIdParam), [municipalityIdParam]);
@@ -109,8 +106,6 @@ export const SearchJobs = () => {
 
       <SearchResults
         jobs={jobAds}
-        getIsSaved={isSaved}
-        handleSaveBtn={handleToggleSave}
       />
 
       <Pagination totalPages={totalPages} totalResults={totalResults} onPageChange={handlePageChange} />
