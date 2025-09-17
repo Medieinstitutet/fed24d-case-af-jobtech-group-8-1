@@ -7,7 +7,7 @@ import { SearchResults } from "./SearchResults";
 import { LocationFilter } from "./LocationFilter";
 import { getJobAds } from "../../services/jobAdsService";
 import { getAllMunicipalities, type MunicipalityOption } from "../../services/municipalitiesService";
-import { DigiLayoutBlock, DigiLayoutColumns, DigiLayoutContainer } from "@digi/arbetsformedlingen-react";
+import { DigiLayoutBlock, DigiLayoutColumns, DigiLayoutContainer, DigiTypography } from "@digi/arbetsformedlingen-react";
 import {
 	LayoutBlockContainer,
 	LayoutBlockVariation,
@@ -15,7 +15,9 @@ import {
 	LayoutColumnsVariation,
 	LayoutContainerMaxWidth,
 	LayoutContainerVariation,
+  TypographyVariation,
 } from "@digi/arbetsformedlingen";
+import { useScreenSize } from "../../hooks/useScreenSize";
 
 export const SearchJobs = () => {
 	const [searchInput, setSearchInput] = useState("");
@@ -37,6 +39,8 @@ export const SearchJobs = () => {
 	useEffect(() => setMunicipalityId(municipalityIdParam), [municipalityIdParam]);
 
 	const debouncedQuery = useDebouncedValue(searchInput, 300);
+
+	const { isMobile } = useScreenSize();
 
 	useEffect(() => {
 		let cancelled = false;
@@ -115,14 +119,34 @@ export const SearchJobs = () => {
 					afNoGutter
 					afMaxWidth={LayoutContainerMaxWidth.WIDTH_1400}
 				>
-					<DigiLayoutColumns afElement={LayoutColumnsElement.DIV} afVariation={LayoutColumnsVariation.TWO} className="search-columns">
-						<LocationFilter
-							value={municipalityId}
-							onChange={handleMunicipalityChange}
-							options={municipalityOptions}
-						/>
-					  <SearchInput value={searchInput} onChange={setSearchInput} />
-					</DigiLayoutColumns>
+          <div>
+            {isMobile && (
+              <>
+                <LocationFilter
+                  value={municipalityId}
+                  onChange={handleMunicipalityChange}
+                  options={municipalityOptions}
+                />
+                <div style={{marginTop: "2rem"}}>
+                  <SearchInput value={searchInput} onChange={setSearchInput} />
+                </div>
+              </>
+            )}
+            {!isMobile && (
+              <DigiLayoutColumns
+                afElement={LayoutColumnsElement.DIV}
+                afVariation={LayoutColumnsVariation.TWO}
+                className="search-columns"
+              >
+                <LocationFilter
+                  value={municipalityId}
+                  onChange={handleMunicipalityChange}
+                  options={municipalityOptions}
+                />
+                <SearchInput value={searchInput} onChange={setSearchInput} />
+              </DigiLayoutColumns>
+            )}
+          </div>
 				</DigiLayoutContainer>
 			</DigiLayoutBlock>
 			{loadingMunicipalities && <p style={{ marginTop: 8 }}>Laddar kommuner …</p>}
