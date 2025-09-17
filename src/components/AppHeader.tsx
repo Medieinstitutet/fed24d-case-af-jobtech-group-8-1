@@ -68,10 +68,6 @@ import {
 				<NavLink to={"/saved-jobs"}>Dina sparade annonser</NavLink>
 			  </DigiHeaderNavigationItem>
   
-			  <DigiHeaderNavigationItem afCurrentPage={currentPath === "/intern-lia"}>
-				<NavLink to={"/"}>Praktik & LIA</NavLink>
-			  </DigiHeaderNavigationItem>
-  
 			  <DigiHeaderNavigationItem afCurrentPage={currentPath === "/about"}>
 				<NavLink to={"/about"}>Om oss</NavLink>
 			  </DigiHeaderNavigationItem>
