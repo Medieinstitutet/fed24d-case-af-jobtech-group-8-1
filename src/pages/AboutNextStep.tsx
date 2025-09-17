@@ -7,17 +7,26 @@ import {
 	InfoCardVariation,
 	InfoCardSize,
 	ListType,
+	LayoutContainerVariation,
+	LayoutContainerMaxWidth,
 } from "@digi/arbetsformedlingen";
-import { DigiLayoutBlock, DigiTypography, DigiInfoCard, DigiLink, DigiList } from "@digi/arbetsformedlingen-react";
+import {
+	DigiLayoutBlock,
+	DigiTypography,
+	DigiInfoCard,
+	DigiLink,
+	DigiList,
+	DigiLayoutContainer,
+} from "@digi/arbetsformedlingen-react";
 
 export default function AboutNextStep() {
 	return (
 		<main aria-labelledby="about-title">
-			<DigiLayoutBlock
-				afVariation={LayoutBlockVariation.PRIMARY}
-				afContainer={LayoutBlockContainer.FLUID}
+			<DigiLayoutContainer
+				afVariation={LayoutContainerVariation.STATIC}
+				afNoGutter
+				afMaxWidth={LayoutContainerMaxWidth.WIDTH_1400}
 				afVerticalPadding
-				afMarginBottom
 			>
 				<DigiTypography afVariation={TypographyVariation.LARGE}>
 					<h2>Om Next Step</h2>
@@ -53,22 +62,23 @@ export default function AboutNextStep() {
 						Börja söka jobb →
 					</DigiLink>
 				</div>
-			</DigiLayoutBlock>
+			</DigiLayoutContainer>
 
-			<DigiLayoutBlock
-				afVariation={LayoutBlockVariation.PRIMARY}
-				afContainer={LayoutBlockContainer.FLUID}
+			<DigiLayoutContainer
+				afVariation={LayoutContainerVariation.STATIC}
+				afNoGutter
+				afMaxWidth={LayoutContainerMaxWidth.WIDTH_1400}
 				afVerticalPadding
-				afMarginBottom
 			>
 				<DigiTypography afVariation={TypographyVariation.LARGE}>
 					<h2 style={{ marginTop: 0 }}>Tips och info</h2>
 				</DigiTypography>
 
-				<DigiLayoutBlock
-					afVariation={LayoutBlockVariation.PRIMARY}
-					afContainer={LayoutBlockContainer.FLUID}
-					afMarginBottom
+				<DigiLayoutContainer
+					afVariation={LayoutContainerVariation.STATIC}
+					afNoGutter
+					afMaxWidth={LayoutContainerMaxWidth.WIDTH_1400}
+					afVerticalPadding
 				>
 					<div
 						style={{
@@ -82,7 +92,7 @@ export default function AboutNextStep() {
 							afHeading="Sök smart"
 							afHeadingLevel={InfoCardHeadingLevel.H3}
 							afType={InfoCardType.TIP}
-							afVariation={InfoCardVariation.PRIMARY}
+							afVariation={InfoCardVariation.SECONDARY}
 							afSize={InfoCardSize.STANDARD}
 							afLinkHref="/about#contact"
 							afLinkText="Få personliga söktips"
@@ -97,7 +107,7 @@ export default function AboutNextStep() {
 							afHeading="Stärk din ansökan"
 							afHeadingLevel={InfoCardHeadingLevel.H3}
 							afType={InfoCardType.TIP}
-							afVariation={InfoCardVariation.PRIMARY}
+							afVariation={InfoCardVariation.SECONDARY}
 							afSize={InfoCardSize.STANDARD}
 							afLinkHref="/about#contact"
 							afLinkText="Be om CV-mall"
@@ -112,7 +122,7 @@ export default function AboutNextStep() {
 							afHeading="Förbered intervjun"
 							afHeadingLevel={InfoCardHeadingLevel.H3}
 							afType={InfoCardType.TIP}
-							afVariation={InfoCardVariation.PRIMARY}
+							afVariation={InfoCardVariation.SECONDARY}
 							afSize={InfoCardSize.STANDARD}
 							afLinkHref="/about#contact"
 							afLinkText="Få en övningsfrågebank"
@@ -123,9 +133,14 @@ export default function AboutNextStep() {
 							</p>
 						</DigiInfoCard>
 					</div>
-				</DigiLayoutBlock>
+				</DigiLayoutContainer>
 
-				<DigiLayoutBlock afVariation={LayoutBlockVariation.PRIMARY} afContainer={LayoutBlockContainer.FLUID}>
+				<DigiLayoutContainer
+					afVariation={LayoutContainerVariation.STATIC}
+					afNoGutter
+					afMaxWidth={LayoutContainerMaxWidth.WIDTH_1400}
+					afVerticalPadding
+				>
 					<div
 						style={{
 							display: "grid",
@@ -138,7 +153,7 @@ export default function AboutNextStep() {
 							afHeading="LIA & praktik"
 							afHeadingLevel={InfoCardHeadingLevel.H3}
 							afType={InfoCardType.TIP}
-							afVariation={InfoCardVariation.PRIMARY}
+							afVariation={InfoCardVariation.SECONDARY}
 							afSize={InfoCardSize.STANDARD}
 							afLinkHref="/about#contact"
 							afLinkText="Mall för förfrågan"
@@ -153,7 +168,7 @@ export default function AboutNextStep() {
 							afHeading="Traineeprogram"
 							afHeadingLevel={InfoCardHeadingLevel.H3}
 							afType={InfoCardType.TIP}
-							afVariation={InfoCardVariation.PRIMARY}
+							afVariation={InfoCardVariation.SECONDARY}
 							afSize={InfoCardSize.STANDARD}
 							afLinkHref="/about#contact"
 							afLinkText="Kartlägg program"
@@ -168,7 +183,7 @@ export default function AboutNextStep() {
 							afHeading="Portfolio / GitHub"
 							afHeadingLevel={InfoCardHeadingLevel.H3}
 							afType={InfoCardType.TIP}
-							afVariation={InfoCardVariation.PRIMARY}
+							afVariation={InfoCardVariation.SECONDARY}
 							afSize={InfoCardSize.STANDARD}
 							afLinkHref="/about#contact"
 							afLinkText="Få feedback"
@@ -179,8 +194,8 @@ export default function AboutNextStep() {
 							</p>
 						</DigiInfoCard>
 					</div>
-				</DigiLayoutBlock>
-			</DigiLayoutBlock>
+				</DigiLayoutContainer>
+			</DigiLayoutContainer>
 		</main>
 	);
 }
