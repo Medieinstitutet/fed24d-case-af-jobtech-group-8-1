@@ -87,3 +87,7 @@ body {
 .sc-digi-info-card-h .digi-info-card--secondary.sc-digi-info-card {
 	background-color: #ffffff;
 }
+
+.react-link:visited {
+	color: inherit;
+}

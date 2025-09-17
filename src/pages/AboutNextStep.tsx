@@ -18,6 +18,7 @@ import {
 	DigiList,
 	DigiLayoutContainer,
 } from "@digi/arbetsformedlingen-react";
+import { Link } from "react-router";
 
 export default function AboutNextStep() {
 	return (
@@ -57,9 +58,11 @@ export default function AboutNextStep() {
 				</DigiList>
 
 				<div style={{ marginTop: "1rem" }}>
-					<DigiLink afHref="/" hideVisitedColor>
-						Börja söka jobb →
-					</DigiLink>
+					<DigiTypography>
+						<Link to={"/"} className="react-link" style={{fontWeight: "bold"}}>
+							Börja söka jobb →
+						</Link>
+					</DigiTypography>
 				</div>
 			</DigiLayoutContainer>
 
