@@ -27,13 +27,13 @@ export const HeroSection = () => {
 
 	const infoText = (
 		<DigiTypography
-		  afVariation={TypographyVariation.LARGE}
-			  style={
-				  {
-					    "--digi--typography--color--text": "#ffffff",
-				    } as CSSProperties
-				  }
-				>
+			afVariation={TypographyVariation.LARGE}
+			style={
+				{
+					"--digi--typography--color--text": "#ffffff",
+				} as CSSProperties
+			}
+		>
 			<p>
 				NextStep är en digital tjänst som hjälper studenter och nyutexaminerade att navigera i jobbdjungeln.
 				Genom att använda Arbetsförmedlingens öppna data samlar NextStep relevanta annonser för juniora roller,
@@ -47,7 +47,6 @@ export const HeroSection = () => {
 			<DigiMediaImage afSrc={hero_img} afWidth="400" afAlt="Illustration av en man som håller en kikare" />
 		</>
 	);
-
 
 	return (
 		<DigiLayoutBlock
@@ -67,18 +66,18 @@ export const HeroSection = () => {
 				afMaxWidth={LayoutContainerMaxWidth.WIDTH_1400}
 			>
 				<DigiTypographyHeadingJumbo
-				afText="NextStep"
-				afLevel={TypographyHeadingJumboLevel.H1}
-				afVariation={TypographyHeadingJumboVariation.SECONDARY}
-				style={
-					  {
-						  "--digi--grayscale-0": "#ffffff",
-					  } as CSSProperties
-				  }
-			  />
-        <div>
-				{mobile ? (
-					<>
+					afText="NextStep"
+					afLevel={TypographyHeadingJumboLevel.H1}
+					afVariation={TypographyHeadingJumboVariation.SECONDARY}
+					style={
+						{
+							"--digi--grayscale-0": "#ffffff",
+						} as CSSProperties
+					}
+				/>
+				<div>
+					{isMobile ? (
+						<>
 							{infoText}
 							<div
 								style={{
@@ -91,9 +90,12 @@ export const HeroSection = () => {
 								{illustration}
 							</div>
 						</>
-				) : (
-					<DigiLayoutColumns afElement={LayoutColumnsElement.DIV} afVariation={LayoutColumnsVariation.TWO}>
-						{infoText}
+					) : (
+						<DigiLayoutColumns
+							afElement={LayoutColumnsElement.DIV}
+							afVariation={LayoutColumnsVariation.TWO}
+						>
+							{infoText}
 							<div
 								style={{
 									display: "flex",
@@ -104,11 +106,10 @@ export const HeroSection = () => {
 							>
 								{illustration}
 							</div>
-					</DigiLayoutColumns>
-				)}
-			</div>
+						</DigiLayoutColumns>
+					)}
+				</div>
 			</DigiLayoutContainer>
 		</DigiLayoutBlock>
 	);
 };
-
