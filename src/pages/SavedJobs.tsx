@@ -30,13 +30,17 @@ export const SavedJobs = () => {
 
 	if (savedJobs.length === 0) {
 		return (
-			<>
+			<DigiLayoutContainer
+				afVariation={LayoutContainerVariation.STATIC}
+				afNoGutter
+				afMaxWidth={LayoutContainerMaxWidth.WIDTH_1400}
+			>
 				<NoResults
 					page="Dina sparade jobb"
 					headline="Du har inga sparade annonser!"
 					message="Om du trycker på spara-knappen på en annons kommer den att visas här."
 				/>
-			</>
+			</DigiLayoutContainer>
 		);
 	}
 
@@ -47,7 +51,7 @@ export const SavedJobs = () => {
 			afMaxWidth={LayoutContainerMaxWidth.WIDTH_1400}
 		>
 			<DigiTypography afVariation={TypographyVariation.LARGE}>
-				<h2 style={{margin: "2rem 0"}}>Dina sparade jobb</h2>
+				<h2 style={{ margin: "2rem 0" }}>Dina sparade jobb</h2>
 				<div>
 					{jobs.map((job) => (
 						<ResultPresentation
