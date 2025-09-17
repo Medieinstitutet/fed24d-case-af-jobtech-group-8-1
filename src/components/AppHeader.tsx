@@ -8,7 +8,7 @@ import {
   } from "@digi/arbetsformedlingen-react";
   import { MediaFigureAlignment } from "@digi/arbetsformedlingen";
   import logo from "../assets/logo_nextstep_green.svg";
-  import { NavLink, useLocation } from "react-router";
+  import { Link, NavLink, useLocation } from "react-router";
   
   export const AppHeader = () => {
 	const location = useLocation();
@@ -19,10 +19,10 @@ import {
 	return (
 	  <>
 		<DigiHeader afHideSystemName={true} afMenuButtonText="Meny">
-		  <a
+		  <Link
 			slot="header-logo"
 			aria-label="Nextsteps startsida"
-			href="/"
+			to="/"
 			style={{
 			  display: "flex",
 			  alignItems: "center",
@@ -43,7 +43,7 @@ import {
 				afHeight="60"
 			  />
 			</DigiMediaFigure>
-		  </a>
+		  </Link>
   
 		  <div slot="header-content">
 			<DigiHeaderAvatar
