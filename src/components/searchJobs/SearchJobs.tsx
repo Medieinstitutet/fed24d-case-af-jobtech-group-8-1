@@ -155,10 +155,11 @@ export const SearchJobs = () => {
 			{loadingMunicipalities && <p style={{ marginTop: 8 }}>Laddar kommuner …</p>}
 
 			<SearchResults jobs={jobAds} />
-
-			{jobAds.length > 0 && (
-				<Pagination totalPages={totalPages} totalResults={totalResults} onPageChange={handlePageChange} />
-			)}
+      <div style={{marginBottom: "5rem"}}>
+        {jobAds.length > 0 && (
+          <Pagination totalPages={totalPages} totalResults={totalResults} onPageChange={handlePageChange} />
+        )}
+      </div>
 		</>
 	);
 };
