@@ -3,6 +3,8 @@ import {
 	LayoutBlockVariation,
 	LayoutColumnsElement,
 	LayoutColumnsVariation,
+	LayoutContainerMaxWidth,
+	LayoutContainerVariation,
 	TypographyHeadingJumboLevel,
 	TypographyHeadingJumboVariation,
 	TypographyVariation,
@@ -10,6 +12,7 @@ import {
 import {
 	DigiLayoutBlock,
 	DigiLayoutColumns,
+	DigiLayoutContainer,
 	DigiMediaImage,
 	DigiTypography,
 	DigiTypographyHeadingJumbo,
@@ -53,43 +56,49 @@ export const HeroSection = () => {
 			afVerticalPadding
 			afContainer={LayoutBlockContainer.FLUID}
 		>
-			<DigiTypographyHeadingJumbo
-				afText="NextStep"
-				afLevel={TypographyHeadingJumboLevel.H1}
-				afVariation={TypographyHeadingJumboVariation.SECONDARY}
-			></DigiTypographyHeadingJumbo>
-			<div>
-				{mobile && (
-					<>
-						{infoText}
-						<div
-							style={{
-								display: "flex",
-								justifyContent: "center",
-								alignItems: "flex-start",
-								margin: "5rem 0",
-							}}
-						>
-							{illustration}
-						</div>
-					</>
-				)}
-				{!mobile && (
-					<DigiLayoutColumns afElement={LayoutColumnsElement.DIV} afVariation={LayoutColumnsVariation.TWO}>
-						{infoText}
-						<div
-							style={{
-								display: "flex",
-								justifyContent: "center",
-								alignItems: "flex-start",
-								marginBottom: "5rem",
-							}}
-						>
-							{illustration}
-						</div>
-					</DigiLayoutColumns>
-				)}
-			</div>
+			<DigiLayoutContainer
+				afVariation={LayoutContainerVariation.STATIC}
+				afNoGutter
+				afMaxWidth={LayoutContainerMaxWidth.WIDTH_1400}
+			>
+				<DigiTypographyHeadingJumbo
+					afText="NextStep"
+					afLevel={TypographyHeadingJumboLevel.H1}
+					afVariation={TypographyHeadingJumboVariation.SECONDARY}
+				></DigiTypographyHeadingJumbo>
+				<div>
+					{mobile && (
+						<>
+							{infoText}
+							<div
+								style={{
+									display: "flex",
+									justifyContent: "center",
+									alignItems: "flex-start",
+									margin: "5rem 0",
+								}}
+							>
+								{illustration}
+							</div>
+						</>
+					)}
+					{!mobile && (
+						<DigiLayoutColumns afElement={LayoutColumnsElement.DIV} afVariation={LayoutColumnsVariation.TWO}>
+							{infoText}
+							<div
+								style={{
+									display: "flex",
+									justifyContent: "center",
+									alignItems: "flex-start",
+									marginBottom: "5rem",
+								}}
+							>
+								{illustration}
+							</div>
+						</DigiLayoutColumns>
+					)}
+				</div>
+			</DigiLayoutContainer>
 		</DigiLayoutBlock>
 	);
 };
