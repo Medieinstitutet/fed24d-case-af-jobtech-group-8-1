@@ -35,6 +35,8 @@
 	--digi--color--text--inverted: #fcf7eb;
 	--digi--color--border--inverted-3: #fcf7eb;
 	--digi--color--text--primary: #267e5b;
+
+	--digi--border-radius--input: 0.375rem;
 	--digi--grayscale-0: #267e5b;
 }
 
@@ -72,5 +74,6 @@ body {
 	height: auto;
 }
 
-  
-
+.search-columns .digi-layout-columns.sc-digi-layout-columns {
+	grid-template-columns: 1fr 2fr;
+}
