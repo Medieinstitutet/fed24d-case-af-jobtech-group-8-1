@@ -3,7 +3,7 @@ import { useParams } from "react-router";
 import { getJobAdById } from "../services/jobAdsService";
 import type { IJobAdDetailed } from "../models/IJobAd";
 import { DigiLayoutBlock, DigiLayoutColumns, DigiLayoutContainer, DigiTypography } from "@digi/arbetsformedlingen-react";
-import { LayoutBlockContainer, LayoutBlockVariation, LayoutColumnsElement, LayoutColumnsVariation, LayoutContainerMaxWidth, LayoutContainerVariation } from "@digi/arbetsformedlingen";
+import { LayoutBlockVariation, LayoutColumnsElement, LayoutColumnsVariation, LayoutContainerMaxWidth, LayoutContainerVariation } from "@digi/arbetsformedlingen";
 import { JobAdDescription } from "../components/jobAd/JobAdDescription";
 import { JobAdApply } from "../components/jobAd/JobAdApply";
 import { JobAdDetails } from "../components/jobAd/JobAdDetails";
