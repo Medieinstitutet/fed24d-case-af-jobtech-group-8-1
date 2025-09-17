@@ -18,14 +18,22 @@ import {
 	DigiTypographyHeadingJumbo,
 } from "@digi/arbetsformedlingen-react";
 
-import hero_img from "../assets/hero_img.svg";
+import hero_img from "../assets/hero_img_light.svg";
 import { useScreenSize } from "../hooks/useScreenSize";
+import type { CSSProperties } from "react";
 
 export const HeroSection = () => {
 	const { isMobile } = useScreenSize();
 
 	const infoText = (
-		<DigiTypography afVariation={TypographyVariation.LARGE}>
+		<DigiTypography
+		  afVariation={TypographyVariation.LARGE}
+			  style={
+				  {
+					    "--digi--typography--color--text": "#ffffff",
+				    } as CSSProperties
+				  }
+				>
 			<p>
 				NextStep är en digital tjänst som hjälper studenter och nyutexaminerade att navigera i jobbdjungeln.
 				Genom att använda Arbetsförmedlingens öppna data samlar NextStep relevanta annonser för juniora roller,
@@ -40,11 +48,18 @@ export const HeroSection = () => {
 		</>
 	);
 
+
 	return (
 		<DigiLayoutBlock
+			className="ns-hero"
 			afVariation={LayoutBlockVariation.TERTIARY}
 			afVerticalPadding
 			afContainer={LayoutBlockContainer.FLUID}
+			style={
+				{
+					"--digi--layout-block--background--tertiary": "#267e5b",
+				} as CSSProperties
+			}
 		>
 			<DigiLayoutContainer
 				afVariation={LayoutContainerVariation.STATIC}
@@ -52,13 +67,18 @@ export const HeroSection = () => {
 				afMaxWidth={LayoutContainerMaxWidth.WIDTH_1400}
 			>
 				<DigiTypographyHeadingJumbo
-					afText="NextStep"
-					afLevel={TypographyHeadingJumboLevel.H1}
-					afVariation={TypographyHeadingJumboVariation.SECONDARY}
-				></DigiTypographyHeadingJumbo>
-				<div>
-					{isMobile && (
-						<>
+				afText="NextStep"
+				afLevel={TypographyHeadingJumboLevel.H1}
+				afVariation={TypographyHeadingJumboVariation.SECONDARY}
+				style={
+					  {
+						  "--digi--grayscale-0": "#ffffff",
+					  } as CSSProperties
+				  }
+			  />
+        <div>
+				{mobile ? (
+					<>
 							{infoText}
 							<div
 								style={{
@@ -71,10 +91,9 @@ export const HeroSection = () => {
 								{illustration}
 							</div>
 						</>
-					)}
-					{!isMobile && (
-						<DigiLayoutColumns afElement={LayoutColumnsElement.DIV} afVariation={LayoutColumnsVariation.TWO}>
-							{infoText}
+				) : (
+					<DigiLayoutColumns afElement={LayoutColumnsElement.DIV} afVariation={LayoutColumnsVariation.TWO}>
+						{infoText}
 							<div
 								style={{
 									display: "flex",
@@ -85,10 +104,11 @@ export const HeroSection = () => {
 							>
 								{illustration}
 							</div>
-						</DigiLayoutColumns>
-					)}
-				</div>
+					</DigiLayoutColumns>
+				)}
+			</div>
 			</DigiLayoutContainer>
 		</DigiLayoutBlock>
 	);
 };
+
