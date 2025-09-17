@@ -15,7 +15,7 @@ import {
 	DigiTypographyHeadingJumbo,
 } from "@digi/arbetsformedlingen-react";
 
-import hero_img from "../assets/hero_img.svg";
+import hero_img from "../assets/hero_img_light.svg";
 import { useScreenSize } from "../hooks/useScreenSize";
 import { useEffect, useState } from "react";
 import type { CSSProperties } from "react";
