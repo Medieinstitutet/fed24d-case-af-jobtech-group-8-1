@@ -23,16 +23,7 @@ import { useScreenSize } from "../hooks/useScreenSize";
 import { useEffect, useState } from "react";
 
 export const HeroSection = () => {
-	const [mobile, setMobile] = useState(false);
 	const { isMobile } = useScreenSize();
-
-	useEffect(() => {
-		const changeSize = () => {
-			setMobile(isMobile);
-		};
-
-		changeSize();
-	}, [isMobile]);
 
 	const infoText = (
 		<DigiTypography afVariation={TypographyVariation.LARGE}>
@@ -67,7 +58,7 @@ export const HeroSection = () => {
 					afVariation={TypographyHeadingJumboVariation.SECONDARY}
 				></DigiTypographyHeadingJumbo>
 				<div>
-					{mobile && (
+					{isMobile && (
 						<>
 							{infoText}
 							<div
@@ -82,7 +73,7 @@ export const HeroSection = () => {
 							</div>
 						</>
 					)}
-					{!mobile && (
+					{!isMobile && (
 						<DigiLayoutColumns afElement={LayoutColumnsElement.DIV} afVariation={LayoutColumnsVariation.TWO}>
 							{infoText}
 							<div
