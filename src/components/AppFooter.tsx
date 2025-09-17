@@ -2,7 +2,7 @@ import { DigiFooter, DigiFooterCard } from "@digi/arbetsformedlingen-react";
 
 import { FooterVariation, FooterCardVariation } from "@digi/arbetsformedlingen";
 
-import logo from "../assets/logo-nextstep.svg";
+import logo from "../assets/logo_nextstep_light.svg";
 
 export default function AppFooter() {
 	return (
@@ -83,4 +83,5 @@ export default function AppFooter() {
 		</DigiFooter>
 	);
 }
+  
 
