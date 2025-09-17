@@ -2,8 +2,8 @@ import { useEffect, useState } from "react";
 import { useParams } from "react-router";
 import { getJobAdById } from "../services/jobAdsService";
 import type { IJobAdDetailed } from "../models/IJobAd";
-import { DigiLayoutBlock, DigiLayoutColumns, DigiTypography } from "@digi/arbetsformedlingen-react";
-import { LayoutBlockVariation, LayoutColumnsElement, LayoutColumnsVariation } from "@digi/arbetsformedlingen";
+import { DigiLayoutBlock, DigiLayoutColumns, DigiLayoutContainer, DigiTypography } from "@digi/arbetsformedlingen-react";
+import { LayoutBlockContainer, LayoutBlockVariation, LayoutColumnsElement, LayoutColumnsVariation, LayoutContainerMaxWidth, LayoutContainerVariation } from "@digi/arbetsformedlingen";
 import { JobAdDescription } from "../components/jobAd/JobAdDescription";
 import { JobAdApply } from "../components/jobAd/JobAdApply";
 import { JobAdDetails } from "../components/jobAd/JobAdDetails";
@@ -37,18 +37,18 @@ export const JobAd = () => {
 
 	return (
 		<DigiTypography>
-			<DigiLayoutBlock afVariation={LayoutBlockVariation.PRIMARY} afVerticalPadding={true}>
+			<DigiLayoutContainer afVariation={LayoutContainerVariation.STATIC} afNoGutter afMaxWidth={LayoutContainerMaxWidth.WIDTH_1400} >
 				<DigiLayoutColumns afElement={LayoutColumnsElement.DIV} afVariation={LayoutColumnsVariation.TWO}>
-					<DigiLayoutBlock afVariation={LayoutBlockVariation.SECONDARY} afVerticalPadding={true}>
+					<DigiLayoutBlock afVariation={LayoutBlockVariation.TERTIARY} afVerticalPadding={true}>
 						<JobAdDetails jobAd={jobAd} />
 						<JobAdDescription jobAd={jobAd} />
 					</DigiLayoutBlock>
-					<DigiLayoutBlock afVariation={LayoutBlockVariation.SECONDARY} afVerticalPadding={true}>
+					<DigiLayoutContainer afVariation={LayoutContainerVariation.STATIC} afNoGutter>
 						<JobAdEmployer jobAd={jobAd} />
 						<JobAdApply jobAd={jobAd} />
-					</DigiLayoutBlock>
+					</DigiLayoutContainer>
 				</DigiLayoutColumns>
-			</DigiLayoutBlock>
+			</DigiLayoutContainer>
 		</DigiTypography>
 	);
 };
