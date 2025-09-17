@@ -72,3 +72,7 @@ body {
 	display: block;
 	height: auto;
 }
+
+.search-columns .digi-layout-columns.sc-digi-layout-columns {
+	grid-template-columns: 1fr 2fr;
+}
