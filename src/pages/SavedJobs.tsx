@@ -47,7 +47,7 @@ export const SavedJobs = () => {
 			afMaxWidth={LayoutContainerMaxWidth.WIDTH_1400}
 		>
 			<DigiTypography afVariation={TypographyVariation.LARGE}>
-				<h2>Dina sparade jobb</h2>
+				<h2 style={{margin: "5rem 0 2rem"}}>Dina sparade jobb</h2>
 				<div>
 					{jobs.map((job) => (
 						<ResultPresentation
