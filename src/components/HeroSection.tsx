@@ -44,7 +44,7 @@ export const HeroSection = () => {
 
 	const illustration = (
 		<>
-			<DigiMediaImage afSrc={hero_img} afWidth="400" afAlt="Illustration av en man som håller en kikare" />
+			<DigiMediaImage afSrc={hero_img} afWidth="400" afAlt="Illustration av en man som håller en kikare" afUnlazy/>
 		</>
 	);
 

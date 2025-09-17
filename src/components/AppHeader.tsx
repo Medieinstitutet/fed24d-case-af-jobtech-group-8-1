@@ -43,6 +43,7 @@ import {
 				afAlt="NextStep"
 				afWidth="140"
 				afHeight="60"
+				afUnlazy
 			  />
 			</DigiMediaFigure>
 		  </Link>
