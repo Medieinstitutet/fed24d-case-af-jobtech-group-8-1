@@ -22,16 +22,6 @@ export const JobAdDescription = ({ jobAd }: JobAdDescriptionProps) => {
 						<p>Ingen beskrivning tillgänglig</p>
 					)}
 				</DigiLayoutContainer>
-				<DigiLayoutContainer
-					afVerticalPadding={true}
-					afVariation={LayoutContainerVariation.NONE}
-					afMarginTop={true}
-				>
-					<DigiTypographyMeta afVariation="primary">
-						<p>Publicerad:</p>
-						<p slot="secondary">{new Date(jobAd.publication_date).toLocaleDateString("sv-SE")}</p>
-					</DigiTypographyMeta>
-				</DigiLayoutContainer>
 			</DigiTypography>
 		</>
 	);
