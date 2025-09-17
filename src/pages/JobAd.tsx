@@ -37,7 +37,7 @@ export const JobAd = () => {
 
 	return (
 		<DigiTypography>
-			<DigiLayoutContainer afVariation={LayoutContainerVariation.STATIC} afNoGutter afMaxWidth={LayoutContainerMaxWidth.WIDTH_1400} >
+			<DigiLayoutContainer afVariation={LayoutContainerVariation.STATIC} afNoGutter afMaxWidth={LayoutContainerMaxWidth.WIDTH_1400} afMarginBottom>
 				<DigiLayoutColumns afElement={LayoutColumnsElement.DIV} afVariation={LayoutColumnsVariation.TWO}>
 					<DigiLayoutBlock afVariation={LayoutBlockVariation.TERTIARY} afVerticalPadding={true}>
 						<JobAdDetails jobAd={jobAd} />
