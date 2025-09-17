@@ -10,18 +10,18 @@
 	--digi--color--background--inverted-1: #267e5b;
 	/* Hover */
 	--digi--color--background--inverted-6: #1d4e37;
-
+	
 	/* Link text color */
 	--digi--color--text--link: #377d5c;
-
+	
 	/* Default white color: */
 	--digi--color--background--primary: #f3f0e6;
-
+	
 	/* Background */
 	--digi--layout-block--background--secondary: #f3f0e6;
 	--digi--color--background--secondary: #f3f0e6;
 	--digi--color--background--neutral-4: #ffffff;
-
+	
 	/* Pagination: */
 	--digi--color--text--secondary: #000;
 	--digi--color--border--secondary: #377d5c;
@@ -29,15 +29,17 @@
 	--digi--button--color--border--primary--default: #377d5c;
 	--digi--button--color--border--primary--hover: #377d5c;
 	--digi--button--color--border--primary--active: #377d5c;
-
+	
 	/* Pagination btn non-active hover */
 	--digi--color--background--inverted-5: #d4e9db;
 	--digi--color--text--inverted: #fcf7eb;
 	--digi--color--border--inverted-3: #fcf7eb;
 	--digi--color--text--primary: #267e5b;
-
+	
 	--digi--border-radius--input: 0.375rem;
 	--digi--grayscale-0: #267e5b;
+	--digi--color--background--neutral-8: #f3f0e6;
+	--digi--color--border--neutral-2: #f3f0e6;
 }
 
 main,
@@ -82,3 +84,6 @@ body {
 	margin: 0;
 }
 
+.sc-digi-info-card-h .digi-info-card--secondary.sc-digi-info-card {
+	background-color: #ffffff;
+}
