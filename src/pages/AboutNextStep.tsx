@@ -21,12 +21,11 @@ import {
 
 export default function AboutNextStep() {
 	return (
-		<main aria-labelledby="about-title">
+		<main aria-labelledby="about-title" style={{margin: "2rem 0"}}>
 			<DigiLayoutContainer
 				afVariation={LayoutContainerVariation.STATIC}
 				afNoGutter
 				afMaxWidth={LayoutContainerMaxWidth.WIDTH_1400}
-				afVerticalPadding
 			>
 				<DigiTypography afVariation={TypographyVariation.LARGE}>
 					<h2>Om Next Step</h2>
