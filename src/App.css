@@ -4,7 +4,12 @@ body {
 
 /*-------- Header --------*/
 
-/* Remove default logo */
+/* Remove default logo in header */
 .digi-header digi-logo .digi-logo__img {
+	display: none !important;
+}
+
+/* Remove default image in Error.tsx */
+.digi-notification-error-page__picture.sc-digi-notification-error-page.sc-digi-layout-container {
 	display: none !important;
 }
