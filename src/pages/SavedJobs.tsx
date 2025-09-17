@@ -1,5 +1,5 @@
-import { LayoutBlockVariation, LayoutBlockContainer, TypographyVariation } from "@digi/arbetsformedlingen";
-import { DigiLayoutBlock, DigiTypography } from "@digi/arbetsformedlingen-react";
+import { TypographyVariation, LayoutContainerMaxWidth, LayoutContainerVariation } from "@digi/arbetsformedlingen";
+import { DigiLayoutContainer, DigiTypography } from "@digi/arbetsformedlingen-react";
 import { useSavedJobs } from "../hooks/useSavedJobs";
 import type { IJobAdBrief } from "../models/IJobAd";
 import { useEffect, useState } from "react";
@@ -8,44 +8,57 @@ import { ResultPresentation } from "../components/searchJobs/ResultPresentation"
 
 export const SavedJobs = () => {
 	const { savedJobs, isSaved, handleToggleSave } = useSavedJobs();
-    const [jobs, setJobs] = useState<IJobAdBrief[]>([]);
-    const [hasFetched, setHasFetched] = useState(false);
+	const [jobs, setJobs] = useState<IJobAdBrief[]>([]);
+	const [hasFetched, setHasFetched] = useState(false);
 
-    // Denna är här för att motverka remove childError när någon vill ta bort en sparad annons
-    // Och ger användaren en chans att ångra sig om den råkade ta bort en sparad annons.
-    useEffect(() => {
-        const setSavedJobs = () => {
-            setJobs(savedJobs);
-            setHasFetched(true);
-        }
+	// Denna är här för att motverka remove childError när någon vill ta bort en sparad annons
+	// Och ger användaren en chans att ångra sig om den råkade ta bort en sparad annons.
+	useEffect(() => {
+		const setSavedJobs = () => {
+			setJobs(savedJobs);
+			setHasFetched(true);
+		};
 
-        if (hasFetched) return;
+		if (hasFetched) return;
 
-        setSavedJobs();
-    }, [hasFetched, savedJobs]);
+		setSavedJobs();
+	}, [hasFetched, savedJobs]);
 
-    const handleRemoveJob = (job: IJobAdBrief) => {
-        handleToggleSave(job);
-    }
+	const handleRemoveJob = (job: IJobAdBrief) => {
+		handleToggleSave(job);
+	};
 
-    if (savedJobs.length === 0) {
-        return (
-            <>
-                <NoResults page="Dina sparade jobb" headline="Du har inga sparade annonser!" message="Om du trycker på spara-knappen på en annons kommer den att visas här."/>
-            </>
-        )
-    }
+	if (savedJobs.length === 0) {
+		return (
+			<>
+				<NoResults
+					page="Dina sparade jobb"
+					headline="Du har inga sparade annonser!"
+					message="Om du trycker på spara-knappen på en annons kommer den att visas här."
+				/>
+			</>
+		);
+	}
 
 	return (
-		<DigiLayoutBlock afVariation={LayoutBlockVariation.PRIMARY} afContainer={LayoutBlockContainer.FLUID} afMarginBottom afMarginTop>
+		<DigiLayoutContainer
+			afVariation={LayoutContainerVariation.STATIC}
+			afNoGutter
+			afMaxWidth={LayoutContainerMaxWidth.WIDTH_1400}
+		>
 			<DigiTypography afVariation={TypographyVariation.LARGE}>
 				<h2>Dina sparade jobb</h2>
 				<div>
 					{jobs.map((job) => (
-						<ResultPresentation key={job.id} job={job} getIsSaved={isSaved} handleSaveBtn={handleRemoveJob} />
+						<ResultPresentation
+							key={job.id}
+							job={job}
+							getIsSaved={isSaved}
+							handleSaveBtn={handleRemoveJob}
+						/>
 					))}
 				</div>
 			</DigiTypography>
-		</DigiLayoutBlock>
+		</DigiLayoutContainer>
 	);
 };
