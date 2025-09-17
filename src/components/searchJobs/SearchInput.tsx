@@ -10,11 +10,12 @@ export const SearchInput = ({ value, onChange }: SearchInputProps) => {
 	return (
 		<DigiFormInputSearch
 			afLabel="Sök efter jobbtitel eller nyckelord"
-			afVariation={FormInputSearchVariation.LARGE}
+			afVariation={FormInputSearchVariation.MEDIUM}
 			afType={FormInputType.SEARCH}
 			afButtonText="Sök nu"
 			afValue={value}
 			onAfOnChange={(e) => onChange(String((e.target as HTMLDigiFormInputElement).value))}
+			afLabelDescription="Filtrera: +inkludera, -uteslut"
 		></DigiFormInputSearch>
 	);
 };
