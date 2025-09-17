@@ -5,23 +5,27 @@ import {
 	InfoCardBorderPosition,
 	LayoutContainerVariation,
 } from "@digi/arbetsformedlingen";
-import { DigiTypography, DigiInfoCard, DigiLayoutContainer, DigiLinkExternal } from "@digi/arbetsformedlingen-react";
+import { DigiInfoCard, DigiLayoutContainer, DigiLinkExternal } from "@digi/arbetsformedlingen-react";
 import type { IJobAdDetailed } from "../../models/IJobAd";
+import { useScreenSize } from "../../hooks/useScreenSize";
 
 type JobAdApplyProps = {
 	jobAd: IJobAdDetailed;
 };
 
 export const JobAdApply = ({ jobAd }: JobAdApplyProps) => {
+	const { isMobile } = useScreenSize();
+
 	return (
 		<>
-			<DigiTypography>
+			<DigiLayoutContainer afNoGutter afVariation={LayoutContainerVariation.NONE} afVerticalPadding={true}>
 				<DigiInfoCard
 					afHeading="Gör en ansökan"
 					afHeadingLevel={InfoCardHeadingLevel.H2}
-					afType={InfoCardType.RELATED}
+					afType={isMobile ? InfoCardType.TIP : InfoCardType.RELATED}
 					afVariation={InfoCardVariation.SECONDARY}
-					afBorderPosition={InfoCardBorderPosition.LEFT}
+					hideVisitedColor={true}
+					afBorderPosition={isMobile ? InfoCardBorderPosition.TOP : InfoCardBorderPosition.LEFT}
 				>
 					<DigiLayoutContainer afVariation={LayoutContainerVariation.NONE} afMarginTop={false}>
 						{jobAd.application_details?.url && (
@@ -40,13 +44,13 @@ export const JobAdApply = ({ jobAd }: JobAdApplyProps) => {
 								</p>
 							</div>
 						)}
-						<span>
+						<p>
 							Ange referens <strong>{jobAd.application_details?.reference}</strong> i ansökan
-						</span>
+						</p>
 						<p>Ansök senast: {new Date(jobAd.application_deadline).toLocaleString("sv-SE")}</p>
 					</DigiLayoutContainer>
 				</DigiInfoCard>
-			</DigiTypography>
+			</DigiLayoutContainer>
 		</>
 	);
 };
