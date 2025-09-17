@@ -3,10 +3,11 @@ import {
 	DigiHeaderAvatar,
 	DigiHeaderNavigation,
 	DigiHeaderNavigationItem,
+	DigiLayoutContainer,
 	DigiMediaFigure,
 	DigiMediaImage,
   } from "@digi/arbetsformedlingen-react";
-  import { MediaFigureAlignment } from "@digi/arbetsformedlingen";
+  import { LayoutContainerMaxWidth, LayoutContainerVariation, MediaFigureAlignment } from "@digi/arbetsformedlingen";
   import logo from "../assets/logo_nextstep_green.svg";
   import { Link, NavLink, useLocation } from "react-router";
   
@@ -17,7 +18,7 @@ import {
 	console.log(currentPath);
   
 	return (
-	  <>
+	  <DigiLayoutContainer afVariation={LayoutContainerVariation.STATIC} afMaxWidth={LayoutContainerMaxWidth.WIDTH_1400} afNoGutter>
 		<DigiHeader afHideSystemName={true} afMenuButtonText="Meny">
 		  <Link
 			slot="header-logo"
@@ -27,7 +28,7 @@ import {
 			  display: "flex",
 			  alignItems: "center",
 			  gap: "10px",
-			  paddingLeft: "16px",
+			  margin: "0",
 			  textDecoration: "none",
 			  color: "var(--digi--color--text--primary)",
 			}}
@@ -35,6 +36,7 @@ import {
 			<DigiMediaFigure
 			  className="ns-footer__logo"
 			  afAlignment={MediaFigureAlignment.START}
+			  style={{marginBlock: "0"}}
 			>
 			  <DigiMediaImage
 				afSrc={logo}
@@ -74,7 +76,7 @@ import {
 			</DigiHeaderNavigation>
 		  </div>
 		</DigiHeader>
-	  </>
+	  </DigiLayoutContainer>
 	);
   };
   

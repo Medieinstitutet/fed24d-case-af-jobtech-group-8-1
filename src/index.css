@@ -77,3 +77,8 @@ body {
 .search-columns .digi-layout-columns.sc-digi-layout-columns {
 	grid-template-columns: 1fr 2fr;
 }
+
+.digi-media-figure {
+	margin: 0;
+}
+
