@@ -119,6 +119,9 @@ export const SearchJobs = () => {
 					afNoGutter
 					afMaxWidth={LayoutContainerMaxWidth.WIDTH_1400}
 				>
+          <DigiTypography afVariation={TypographyVariation.LARGE}>
+            <h2>Sök efter jobb:</h2>
+          </DigiTypography>
           <div>
             {isMobile && (
               <>
