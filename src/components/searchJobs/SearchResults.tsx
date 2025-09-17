@@ -12,13 +12,13 @@ export const SearchResults = ({ jobs }: SearchResultsProps) => {
 
 	if (jobs.length === 0) {
 		return (
-			<>
+			<DigiLayoutContainer afVariation={LayoutContainerVariation.STATIC} afNoGutter afMaxWidth={LayoutContainerMaxWidth.WIDTH_1400}>
 				<NoResults
 					page="Sökresultat:"
 					headline="Tyvärr hittade vi inga annonser för din sökning."
 					message="Var vanlig försök igen med ett annat sök-ord."
 				/>
-			</>
+			</DigiLayoutContainer>
 		);
 	}
 
