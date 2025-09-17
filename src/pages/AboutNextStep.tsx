@@ -1,6 +1,4 @@
 import {
-	LayoutBlockVariation,
-	LayoutBlockContainer,
 	TypographyVariation,
 	InfoCardHeadingLevel,
 	InfoCardType,
@@ -11,10 +9,8 @@ import {
 	LayoutContainerMaxWidth,
 } from "@digi/arbetsformedlingen";
 import {
-	DigiLayoutBlock,
 	DigiTypography,
 	DigiInfoCard,
-	DigiLink,
 	DigiList,
 	DigiLayoutContainer,
 } from "@digi/arbetsformedlingen-react";
