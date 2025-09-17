@@ -16,7 +16,7 @@ import {
 } from "@digi/arbetsformedlingen-react";
 
 import hero_img from "../assets/hero_img.svg";
-import { useScreenSize } from "../hooks/useScreensize";
+import { useScreenSize } from "../hooks/useScreenSize";
 import { useEffect, useState } from "react";
  
 export const HeroSection = () => {
