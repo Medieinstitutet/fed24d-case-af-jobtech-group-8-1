@@ -1,4 +1,4 @@
-import { DigiLayoutContainer, DigiTypography, DigiTypographyMeta } from "@digi/arbetsformedlingen-react";
+import { DigiLayoutContainer, DigiTypography } from "@digi/arbetsformedlingen-react";
 import type { IJobAdDetailed } from "../../models/IJobAd";
 import { LayoutContainerVariation } from "@digi/arbetsformedlingen";
 
@@ -11,9 +11,10 @@ export const JobAdDescription = ({ jobAd }: JobAdDescriptionProps) => {
 		<>
 			<DigiTypography>
 				<DigiLayoutContainer
-					afVerticalPadding={false}
-					afVariation={LayoutContainerVariation.NONE}
+					afVariation={LayoutContainerVariation.FLUID}
+					afMarginTop={true}
 					afMarginBottom={true}
+					afNoGutter
 				>
 					<h2>Om tjänsten</h2>
 					{jobAd.description?.text_formatted ? (

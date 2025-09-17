@@ -12,7 +12,7 @@ export const JobAdDetails = ({ jobAd }: JobAdDetailsProps) => {
 			<h2>{jobAd.headline}</h2>
 			<h3>{jobAd.employer.name}</h3>
 			<p>Ort: {jobAd.workplace_address.municipality}</p>
-			<DigiLayoutContainer afVerticalPadding={true}>
+			<DigiLayoutContainer afVerticalPadding={true} afNoGutter>
 				<DigiTypographyMeta afVariation={TypographyMetaVariation.PRIMARY}>
 					<p>Tjänst: </p>
 					<p slot="secondary">{jobAd.occupation.label} </p>
