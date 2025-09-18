@@ -1,0 +1,83 @@
+import {
+	DigiHeader,
+	DigiHeaderAvatar,
+	DigiHeaderNavigation,
+	DigiHeaderNavigationItem,
+	DigiLayoutContainer,
+	DigiMediaFigure,
+	DigiMediaImage,
+  } from "@digi/arbetsformedlingen-react";
+  import { LayoutContainerMaxWidth, LayoutContainerVariation, MediaFigureAlignment } from "@digi/arbetsformedlingen";
+  import logo from "../assets/logo_nextstep_green.svg";
+  import { Link, NavLink, useLocation } from "react-router";
+  
+  export const AppHeader = () => {
+	const location = useLocation();
+	const currentPath = location.pathname;
+  
+	console.log(currentPath);
+  
+	return (
+	  <DigiLayoutContainer afVariation={LayoutContainerVariation.STATIC} afMaxWidth={LayoutContainerMaxWidth.WIDTH_1400} afNoGutter>
+		<DigiHeader afHideSystemName={true} afMenuButtonText="Meny">
+		  <Link
+			slot="header-logo"
+			aria-label="Nextsteps startsida"
+			to="/"
+			style={{
+			  display: "flex",
+			  alignItems: "center",
+			  gap: "10px",
+			  margin: "0",
+			  textDecoration: "none",
+			  color: "var(--digi--color--text--primary)",
+			}}
+		  >
+			<DigiMediaFigure
+			  className="ns-footer__logo"
+			  afAlignment={MediaFigureAlignment.START}
+			  style={{marginBlock: "0"}}
+			>
+			  <DigiMediaImage
+				afSrc={logo}
+				afAlt="NextStep"
+				afWidth="140"
+				afHeight="60"
+				afUnlazy
+			  />
+			</DigiMediaFigure>
+		  </Link>
+  
+		  <div slot="header-content">
+			<DigiHeaderAvatar
+			  afSrc="/assets/images/avatar.svg"
+			  afAlt="Logga in"
+			  afIsLoggedIn={false}
+			  afHideSignature={true}
+			/>
+		  </div>
+  
+		  <div slot="header-navigation">
+			<DigiHeaderNavigation
+			  afCloseButtonText="Stäng"
+			  afCloseButtonAriaLabel="Stäng meny"
+			  afNavAriaLabel="Huvudmeny"
+			>
+			  <DigiHeaderNavigationItem afCurrentPage={currentPath === "/"}>
+				<NavLink to={"/"}>Sök jobb</NavLink>
+			  </DigiHeaderNavigationItem>
+  
+			  <DigiHeaderNavigationItem afCurrentPage={currentPath === "/saved-jobs"}>
+				<NavLink to={"/saved-jobs"}>Dina sparade annonser</NavLink>
+			  </DigiHeaderNavigationItem>
+  
+			  <DigiHeaderNavigationItem afCurrentPage={currentPath === "/about"}>
+				<NavLink to={"/about"}>Om oss</NavLink>
+			  </DigiHeaderNavigationItem>
+			</DigiHeaderNavigation>
+		  </div>
+		</DigiHeader>
+	  </DigiLayoutContainer>
+	);
+  };
+  
