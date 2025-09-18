@@ -43,7 +43,7 @@ export const JobAd = () => {
 			{isMobile ? (
 				<DigiLayoutBlock afVariation={LayoutBlockVariation.PRIMARY} afVerticalPadding={true}>
 					<DigiLayoutColumns afElement={LayoutColumnsElement.DIV} afVariation={LayoutColumnsVariation.ONE}>
-						<DigiLayoutBlock afVariation={LayoutBlockVariation.SECONDARY} afVerticalPadding={true}>
+						<DigiLayoutBlock afVariation={LayoutBlockVariation.TERTIARY} afVerticalPadding={true}>
 							<JobAdDetails jobAd={jobAd} />
 							<JobAdDescription jobAd={jobAd} />
 							<JobAdEmployer jobAd={jobAd} />
@@ -55,12 +55,12 @@ export const JobAd = () => {
 			) : (
 				<DigiLayoutBlock afVariation={LayoutBlockVariation.PRIMARY} afVerticalPadding={true}>
 					<DigiLayoutColumns afElement={LayoutColumnsElement.DIV} afVariation={LayoutColumnsVariation.TWO}>
-						<DigiLayoutBlock afVariation={LayoutBlockVariation.SECONDARY} afVerticalPadding={true}>
+						<DigiLayoutBlock afVariation={LayoutBlockVariation.TERTIARY} afVerticalPadding={true}>
 							<JobAdDetails jobAd={jobAd} />
 							<JobAdDescription jobAd={jobAd} />
 							<JobAdDate jobAd={jobAd} />
 						</DigiLayoutBlock>
-						<DigiLayoutBlock afVariation={LayoutBlockVariation.SECONDARY} afVerticalPadding={true}>
+						<DigiLayoutBlock afVariation={LayoutBlockVariation.SECONDARY} afVerticalPadding={false}>
 							<JobAdEmployer jobAd={jobAd} />
 							<JobAdApply jobAd={jobAd} />
 						</DigiLayoutBlock>
