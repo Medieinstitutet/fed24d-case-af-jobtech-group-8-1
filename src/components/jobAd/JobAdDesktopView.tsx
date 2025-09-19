@@ -5,26 +5,21 @@ import { JobAdDate } from "./JobAdDate";
 import { JobAdDescription } from "./JobAdDescription";
 import { JobAdDetails } from "./JobAdDetails";
 import { JobAdEmployer } from "./JobAdEmployer";
-import type { IJobAdDetailed } from "../../models/IJobAd";
 
-type JobAdMDesktopViewProps = {
-	jobAd: IJobAdDetailed;
-};
-
-export const JobAdDesktopView = ({ jobAd }: JobAdMDesktopViewProps) => {
+export const JobAdDesktopView = () => {
 	return (
 		<>
 			<DigiTypography style={{ wordBreak: "break-word" }}>
 				<DigiLayoutBlock afVariation={LayoutBlockVariation.PRIMARY} afVerticalPadding={true}>
 					<DigiLayoutColumns afElement={LayoutColumnsElement.DIV} afVariation={LayoutColumnsVariation.TWO}>
 						<DigiLayoutBlock afVariation={LayoutBlockVariation.TERTIARY} afVerticalPadding={true}>
-							<JobAdDetails jobAd={jobAd} />
-							<JobAdDescription jobAd={jobAd} />
-							<JobAdDate jobAd={jobAd} />
+							<JobAdDetails />
+							<JobAdDescription />
+							<JobAdDate />
 						</DigiLayoutBlock>
 						<DigiLayoutBlock afVariation={LayoutBlockVariation.SECONDARY} afVerticalPadding={false}>
-							<JobAdEmployer jobAd={jobAd} />
-							<JobAdApply jobAd={jobAd} />
+							<JobAdEmployer />
+							<JobAdApply />
 						</DigiLayoutBlock>
 					</DigiLayoutColumns>
 				</DigiLayoutBlock>

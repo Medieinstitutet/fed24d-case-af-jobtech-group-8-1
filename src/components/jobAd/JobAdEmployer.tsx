@@ -1,5 +1,4 @@
 import { DigiInfoCard, DigiLayoutContainer, DigiLinkExternal, DigiMediaImage } from "@digi/arbetsformedlingen-react";
-import type { IJobAdDetailed } from "../../models/IJobAd";
 import {
 	InfoCardBorderPosition,
 	InfoCardHeadingLevel,
@@ -8,12 +7,10 @@ import {
 	LayoutContainerVariation,
 } from "@digi/arbetsformedlingen";
 import { useScreenSize } from "../../hooks/useScreenSize";
+import { useJobAdContext } from "../../contexts/JobAdContext";
 
-type JobAdEmployerProps = {
-	jobAd: IJobAdDetailed;
-};
-
-export const JobAdEmployer = ({ jobAd }: JobAdEmployerProps) => {
+export const JobAdEmployer = () => {
+	const { jobAd } = useJobAdContext();
 	const { isMobile } = useScreenSize();
 
 	return (

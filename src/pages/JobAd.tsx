@@ -6,6 +6,7 @@ import { LoadingSpinner } from "../components/LoadingSpinner";
 import { useScreenSize } from "../hooks/useScreenSize";
 import { JobAdMobileView } from "../components/jobAd/JobAdMobileView";
 import { JobAdDesktopView } from "../components/jobAd/JobAdDesktopView";
+import { JobAdContext } from "../contexts/JobAdContext";
 
 export const JobAd = () => {
 	const { id } = useParams<{ id: string }>();
@@ -33,5 +34,11 @@ export const JobAd = () => {
 		return <LoadingSpinner />;
 	}
 
-	return <>{isMobile ? <JobAdMobileView jobAd={jobAd} /> : <JobAdDesktopView jobAd={jobAd} />}</>;
+	return (
+		<>
+			<JobAdContext.Provider value={{ jobAd }}>
+				{isMobile ? <JobAdMobileView /> : <JobAdDesktopView />}
+			</JobAdContext.Provider>
+		</>
+	);
 };
