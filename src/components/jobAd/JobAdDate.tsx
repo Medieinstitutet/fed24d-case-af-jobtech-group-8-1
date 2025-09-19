@@ -1,11 +1,9 @@
 import { DigiLayoutContainer, DigiTypographyMeta } from "@digi/arbetsformedlingen-react";
-import type { IJobAdDetailed } from "../../models/IJobAd";
+import { useJobAdContext } from "../../contexts/JobAdContext";
 
-type JobAdDateProps = {
-	jobAd: IJobAdDetailed;
-};
+export const JobAdDate = () => {
+	const { jobAd } = useJobAdContext();
 
-export const JobAdDate = ({ jobAd }: JobAdDateProps) => {
 	return (
 		<DigiLayoutContainer afNoGutter afVerticalPadding={true}>
 			<DigiTypographyMeta afVariation="primary">

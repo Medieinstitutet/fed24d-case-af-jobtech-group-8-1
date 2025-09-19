@@ -6,14 +6,11 @@ import {
 	LayoutContainerVariation,
 } from "@digi/arbetsformedlingen";
 import { DigiInfoCard, DigiLayoutContainer, DigiLinkExternal } from "@digi/arbetsformedlingen-react";
-import type { IJobAdDetailed } from "../../models/IJobAd";
 import { useScreenSize } from "../../hooks/useScreenSize";
+import { useJobAdContext } from "../../contexts/JobAdContext";
 
-type JobAdApplyProps = {
-	jobAd: IJobAdDetailed;
-};
-
-export const JobAdApply = ({ jobAd }: JobAdApplyProps) => {
+export const JobAdApply = () => {
+	const { jobAd } = useJobAdContext();
 	const { isMobile } = useScreenSize();
 
 	return (
