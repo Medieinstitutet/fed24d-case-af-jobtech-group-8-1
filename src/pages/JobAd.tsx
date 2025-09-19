@@ -2,15 +2,10 @@ import { useEffect, useState } from "react";
 import { useParams } from "react-router";
 import { getJobAdById } from "../services/jobAdsService";
 import type { IJobAdDetailed } from "../models/IJobAd";
-import { DigiLayoutBlock, DigiLayoutColumns, DigiTypography } from "@digi/arbetsformedlingen-react";
-import { LayoutBlockVariation, LayoutColumnsElement, LayoutColumnsVariation } from "@digi/arbetsformedlingen";
-import { JobAdDescription } from "../components/jobAd/JobAdDescription";
-import { JobAdApply } from "../components/jobAd/JobAdApply";
-import { JobAdDetails } from "../components/jobAd/JobAdDetails";
 import { LoadingSpinner } from "../components/LoadingSpinner";
-import { JobAdEmployer } from "../components/jobAd/JobAdEmployer";
 import { useScreenSize } from "../hooks/useScreenSize";
-import { JobAdDate } from "../components/jobAd/JobAdDate";
+import { JobAdMobileView } from "../components/jobAd/JobAdMobileView";
+import { JobAdDesktopView } from "../components/jobAd/JobAdDesktopView";
 
 export const JobAd = () => {
 	const { id } = useParams<{ id: string }>();
@@ -38,35 +33,5 @@ export const JobAd = () => {
 		return <LoadingSpinner />;
 	}
 
-	return (
-		<DigiTypography>
-			{isMobile ? (
-				<DigiLayoutBlock afVariation={LayoutBlockVariation.PRIMARY} afVerticalPadding={true}>
-					<DigiLayoutColumns afElement={LayoutColumnsElement.DIV} afVariation={LayoutColumnsVariation.ONE}>
-						<DigiLayoutBlock afVariation={LayoutBlockVariation.TERTIARY} afVerticalPadding={true}>
-							<JobAdDetails jobAd={jobAd} />
-							<JobAdDescription jobAd={jobAd} />
-							<JobAdEmployer jobAd={jobAd} />
-							<JobAdApply jobAd={jobAd} />
-							<JobAdDate jobAd={jobAd} />
-						</DigiLayoutBlock>
-					</DigiLayoutColumns>
-				</DigiLayoutBlock>
-			) : (
-				<DigiLayoutBlock afVariation={LayoutBlockVariation.PRIMARY} afVerticalPadding={true}>
-					<DigiLayoutColumns afElement={LayoutColumnsElement.DIV} afVariation={LayoutColumnsVariation.TWO}>
-						<DigiLayoutBlock afVariation={LayoutBlockVariation.TERTIARY} afVerticalPadding={true}>
-							<JobAdDetails jobAd={jobAd} />
-							<JobAdDescription jobAd={jobAd} />
-							<JobAdDate jobAd={jobAd} />
-						</DigiLayoutBlock>
-						<DigiLayoutBlock afVariation={LayoutBlockVariation.SECONDARY} afVerticalPadding={false}>
-							<JobAdEmployer jobAd={jobAd} />
-							<JobAdApply jobAd={jobAd} />
-						</DigiLayoutBlock>
-					</DigiLayoutColumns>
-				</DigiLayoutBlock>
-			)}
-		</DigiTypography>
-	);
+	return <>{isMobile ? <JobAdMobileView jobAd={jobAd} /> : <JobAdDesktopView jobAd={jobAd} />}</>;
 };
