@@ -1,12 +1,10 @@
 import { DigiLayoutContainer, DigiTypographyMeta } from "@digi/arbetsformedlingen-react";
-import type { IJobAdDetailed } from "../../models/IJobAd";
 import { TypographyMetaVariation } from "@digi/arbetsformedlingen";
+import { useJobAdContext } from "../../contexts/JobAdContext";
 
-type JobAdDetailsProps = {
-	jobAd: IJobAdDetailed;
-};
+export const JobAdDetails = () => {
+	const { jobAd } = useJobAdContext();
 
-export const JobAdDetails = ({ jobAd }: JobAdDetailsProps) => {
 	return (
 		<>
 			<h2>{jobAd.headline}</h2>
