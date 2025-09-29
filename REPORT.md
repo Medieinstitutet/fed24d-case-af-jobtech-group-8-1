@@ -1,6 +1,7 @@
 # 📌 Rättningsrapport – fed24d-case-af-jobtech-group-8-1
 
 ## 🎯 Uppgiftens Krav:
+[![Review Assignment Due Date](https://classroom.github.com/assets/deadline-readme-button-22041afd0340ce965d47ae6ef1cefeee28c7c493a6346c4f15d667ab976d596c.svg)](https://classroom.github.com/a/6VsM7MHT)
 # Skapa en egen Platsbanken för ert drömscenario 
 
 Dokumentation om Arbetsförmedlingens öppna data finns på https://jobtechdev.se. All öppna data från arbetsförmedlingen och andra offentliga organisationen går även att hitta direkt på dataportal.se. 
@@ -8,17 +9,17 @@ I detta dokument ges två förslag på användningsfall som vi tror är lämplig
 
 Läs först igenom kom-igång hjälpen 
 
--  [Övergripande dokumentation API:etJobSearch](https://data.arbetsformedlingen.se/data/platsannonser/)
--  [Kom-igång guide](https://gitlab.com/arbetsformedlingen/job-ads/jobsearch/jobsearch-api/-/blob/main/docs/GettingStartedJobSearchSE.md)
+-  [Övergripande dokumentation API:etJobSearch](https://jobtechdev.se/sv/components/jobsearch)
+-  [Kom-igång guide](https://gitlab.com/arbetsformedlingen/education/education-api/-/blob/main/GETTING_STARTED.md)
 
 ## Prova att utforska datan med vår interaktiva tjänst 
 
-Görs genom att öppna Swagger-sidan för API:et (för att enkelt testa olika endpoints i API:et och läsa dokumentation för respektive endpoint): [Search job ads (jobtechdev.se)](https://jobsearch.api.jobtechdev.se/)
+Görs genom att öppna Swagger-sidan för API:et (för att enkelt testa olika endpoints i API:et och läsa dokumentation för respektive endpoint): Search job ads (jobtechdev.se) 
 
 ## Uppgift 
 
-Använd endpoint **/search** för att söka bland befintliga annonser. 
-Det går även bra att använda historiska annonser om ni vill jämföra aktuella annonser med hur det har sett ut tidigare. Detta api finns här: [Historical job ads (jobtechdev.se)](https://historical.api.jobtechdev.se/)
+Använd endpoint https://jobsearch.api.jobtechdev.se/ för att använda/söka bland befintliga annonser. 
+Det går även bra att använda historiska annonser om ni vill jämföra aktuella annonser med hur det har sett ut tidigare. Detta api finns här: Historical job ads (jobtechdev.se)
 
 Om möjligt, använd en grafisk presentation av era resultat genom t.ex. stapeldiagram eller linjegrafer.
 
@@ -38,16 +39,22 @@ Er slutprodukt ska ej innehålla Arbetsförmedlingens logga eller färger. Anpas
 - Styled components (som drar nytta av designsystemet) 
 - Grafisk presentation av datat 
 - Användning av custom hook där det finns möjlighet
-- Använd endpoint /complete för att lägga till autocomplete-funktion och få förslag på begrepp vid fritextsökning
 
 ## 🔍 ESLint-varningar:
 - C:\Work\AssignmentCorrector\backend\repos\fed24d-case-af-jobtech-group-8-1\src\services\serviceBase.ts - no-console - Unexpected console statement.
 
-## 🏆 **Betyg: IG**
-📌 **Motivering:** Kunde inte tolka uppgiften korrekt. Kontrollera manuellt.
+## 🏆 **Betyg: G**
+📌 **Motivering:** Alla G-krav är uppfyllda: data hämtas strukturerat via fetch i en tjänstelager (services/serviceBase.ts + services/jobAdsService.ts), React‑koncept används korrekt (state, routing, context), designsystemet används konsekvent för presentation och AF:s logga/färger ersätts med egen profil. Koden är överlag välstrukturerad och lättläst.
 
 💡 **Förbättringsförslag:**  
-Automatisk rättning misslyckades. Vänligen kontrollera koden manuellt.
+- TypeScript-modeller: IApplicationDetails använder literaltyper ("string" och via_af: true). Byt till riktiga typer (string, boolean) och gör fält optional där det behövs för att matcha API:t. Detta förbättrar typkontrollen i hela appen.
+- Sökbeteende vs. label: Formuläret beskriver "+inkludera, -uteslut" men buildQuery() escaper tecknen och tolkar dem inte. Implementera tolkning av +/‑ prefix (och gärna frassökning med citattecken) så att UX stämmer med texten.
+- Pagination: DigiNavigationPagination får alltid afCurrentResultStart=1 och afCurrentResultEnd=10. Beräkna dessa utifrån aktuell page och limit (t.ex. start = (page-1)*limit+1, end = Math.min(page*limit, totalResults)) och synka aktiv sida med URL-parametern.
+- Felhantering i UI: Visa användarvänliga felmeddelanden vid misslyckad hämtning (t.ex. när getJobAds eller getJobAdById kastar fel), inte bara tomma resultat.
+- Små kvalitetsdetaljer: Ta bort console.log i AppHeader; rätta stavfel ("Var vanlig" → "Var vänlig", "företages" → "företagets"); undvik överdriven inline‑style där CSS‑variabler/klasser kan användas.
+- Säkerhet/robusthet: description visas via dangerouslySetInnerHTML. Överväg sanering/whitelist av HTML (om möjligt) eller tydliggör att källan är betrodd.
+- Förfining av ortfilter: Ni visar alternativt format med "(count)" men saknar count‑data. Utnyttja API‑facetter (om tillgängligt) för att visa antal per kommun och ge bättre filtreringsfeedback.
+- Bonusmöjlighet (VG-känsla): Lägg till grafisk presentation (t.ex. stapeldiagram över antal annonser per kommun eller över tid) och/eller styled-components som använder designsystemets tokens.
 
 ## 👥 Gruppbidrag
 
